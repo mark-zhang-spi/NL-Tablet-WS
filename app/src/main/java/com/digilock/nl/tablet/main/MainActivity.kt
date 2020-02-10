@@ -118,7 +118,11 @@ class MainActivity: AppCompatActivity(),
     }
 
 
-    /* this is a test1" */
+    private fun testFunc() {
+
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -192,7 +196,7 @@ class MainActivity: AppCompatActivity(),
         }
 
         spUserFilter = this.spFilterUsers_Main
-        val aaUserFilter = ArrayAdapter(this, R.xml.spinner_item, ARRAY_USER_FILTER)
+        val aaUserFilter = ArrayAdapter(this, R.xml.spinner_item.toInt(), ARRAY_USER_FILTER)
         aaUserFilter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spUserFilter!!.setAdapter(aaUserFilter)
 
@@ -222,7 +226,7 @@ class MainActivity: AppCompatActivity(),
         }
 
         spLockFilter = this.spFilterLocks_Main
-        val aaLockFilter = ArrayAdapter(this, R.xml.spinner_item, ARRAY_LOCK_FILTER)
+        val aaLockFilter = ArrayAdapter(this, R.xml.spinner_item.toInt(), ARRAY_LOCK_FILTER)
         aaLockFilter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spLockFilter!!.setAdapter(aaLockFilter)
 
@@ -291,7 +295,7 @@ class MainActivity: AppCompatActivity(),
             presenter.sortByCredType()
         }
 
-        auditFilterLockFuncTypeAdapter = ArrayAdapter(this, R.xml.spinner_item, ARRAY_AUDIT_FILTER)
+        auditFilterLockFuncTypeAdapter = ArrayAdapter(this, R.xml.spinner_item.toInt(), ARRAY_AUDIT_FILTER)
         spLockFuncTypeFilter_Reports.adapter = auditFilterLockFuncTypeAdapter
         spLockFuncTypeFilter_Reports.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -302,7 +306,7 @@ class MainActivity: AppCompatActivity(),
             }
         }
 
-        auditFilterLockNameAdapter = ArrayAdapter(this, R.xml.spinner_item, lockNames)
+        auditFilterLockNameAdapter = ArrayAdapter(this, R.xml.spinner_item.toInt(), lockNames)
         spLockNames_Reports.adapter = auditFilterLockNameAdapter
         spLockNames_Reports.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -313,7 +317,7 @@ class MainActivity: AppCompatActivity(),
             }
         }
 
-        sharedStatusAdapter = ArrayAdapter(this, R.xml.spinner_item, ARRAY_SHARED_STATUS_FILTER)
+        sharedStatusAdapter = ArrayAdapter(this, R.xml.spinner_item.toInt(), ARRAY_SHARED_STATUS_FILTER)
         spSharedStatus_Reports.adapter = sharedStatusAdapter
         spSharedStatus_Reports.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -324,7 +328,7 @@ class MainActivity: AppCompatActivity(),
             }
         }
 
-        assignedStatusAdapter = ArrayAdapter(this, R.xml.spinner_item, ARRAY_ASSIGNED_STATUS_FILTER)
+        assignedStatusAdapter = ArrayAdapter(this, R.xml.spinner_item.toInt(), ARRAY_ASSIGNED_STATUS_FILTER)
         spAssignedStatus_Reports.adapter = assignedStatusAdapter
         spAssignedStatus_Reports.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(p0: AdapterView<*>?) {
