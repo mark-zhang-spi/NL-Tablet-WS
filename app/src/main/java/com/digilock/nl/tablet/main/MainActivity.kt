@@ -117,7 +117,8 @@ class MainActivity: AppCompatActivity(),
         devicesAdapter.notifyDataSetChanged()
     }
 
-    
+
+    /* this is a test" */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
