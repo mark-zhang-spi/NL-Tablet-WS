@@ -1,0 +1,1140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/mainScreen"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <!--
+        Side view layout: main control widgets were embedded in this container.
+        -->
+    <LinearLayout
+        android:id="@+id/llSideView_Main"
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/blue"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1.5" />
+
+        <LinearLayout
+            android:id="@+id/btnUsers_Main"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_small"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/ivUsers_Main"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:src="@mipmap/users_deselected" />
+
+            <TextView
+                android:id="@+id/tvUsers_Main"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="Users"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/button_font_size" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".15" />
+
+        <LinearLayout
+            android:id="@+id/btnLocks_Main"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_small">
+
+            <ImageView
+                android:id="@+id/ivLocks_Main"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:padding="@dimen/padding_small"
+                android:src="@mipmap/locks_selected" />
+
+            <TextView
+                android:id="@+id/tvLocks_Main"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="Locks"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button_font_size" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".15" />
+
+        <LinearLayout
+            android:id="@+id/btnReports_Main"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_small">
+
+            <ImageView
+                android:id="@+id/ivReports_Main"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:padding="@dimen/padding_small"
+                android:src="@mipmap/reports_selected" />
+
+            <TextView
+                android:id="@+id/tvReports_Main"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="Reports"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button_font_size" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".15" />
+
+        <LinearLayout
+            android:id="@+id/btnSettings_Main"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_small">
+
+            <ImageView
+                android:id="@+id/ivSettings_Main"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:padding="@dimen/padding_small"
+                android:src="@mipmap/settings_selected" />
+
+            <TextView
+                android:id="@+id/tvSettings_Main"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="Settings"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button_font_size" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1.5"/>
+
+        <ImageView
+            android:id="@+id/ivBTConnectStatus_Main"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            android:src="@mipmap/disconnected_logo" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray"/>
+
+    <LinearLayout
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:orientation="vertical"
+        android:weightSum="9">
+
+        <!--
+            USERS layout: USER control widgets were embedded in this container.
+            -->
+        <LinearLayout
+            android:id="@+id/llUsersScreen_Main"
+            android:layout_alignParentTop="true"
+            android:padding="@dimen/padding_small"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="9"
+            android:orientation="vertical"
+            android:weightSum="15">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight=".05"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="USERS"
+                android:textSize="@dimen/title_font_size"/>
+
+            <LinearLayout
+                android:id="@+id/llNoUserScreen"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="13"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="3"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/large_users_logo"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight=".25"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0px"
+                    android:layout_weight=".75"
+                    android:text="@string/no_user_yet"
+                    android:textSize="@dimen/label_font_size"
+                    android:layout_gravity="center"/>
+
+                <Button
+                    android:id="@+id/btnAddUser_Main"
+                    android:layout_width="wrap_content"
+                    android:paddingLeft="@dimen/padding_ultra"
+                    android:paddingRight="@dimen/padding_ultra"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:text="@string/button_add_user"
+                    android:textSize="@dimen/button_font_size"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="5"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llDisplayUsersScreen"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="13"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_large">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight=".75"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/ivAddUser_Main"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@mipmap/add_user_logo"/>
+
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/filter"
+                        android:gravity="center_vertical|right"
+                        android:textSize="@dimen/button_font_size"/>
+
+                    <Spinner
+                        android:id="@+id/spFilterUsers_Main"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2">
+
+                    </Spinner>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight=".25"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight=".25"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/userRecyclerView_users"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="10"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight=".25"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--
+            LOCKS layout: LOCK control widgets were embedded in this container.
+            -->
+        <LinearLayout
+            android:id="@+id/llLocksScreen_Main"
+            android:layout_alignParentTop="true"
+            android:padding="@dimen/padding_small"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="9"
+            android:orientation="vertical"
+            android:weightSum="15">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight=".05"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="LOCKS"
+                android:textSize="@dimen/title_font_size"/>
+
+            <LinearLayout
+                android:id="@+id/llNoLockScreen"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="13"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="3"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/large_locks_logo"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight=".25"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0px"
+                    android:layout_weight=".75"
+                    android:text="@string/no_lock_yet"
+                    android:textSize="@dimen/label_font_size"
+                    android:layout_gravity="center"/>
+
+                <Button
+                    android:id="@+id/btnAddLock_Main"
+                    android:layout_width="wrap_content"
+                    android:paddingLeft="@dimen/padding_ultra"
+                    android:paddingRight="@dimen/padding_ultra"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:text="@string/button_add_lock"
+                    android:textSize="@dimen/button_font_size"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="5"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llDisplayLocksScreen"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="13"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_large">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight=".8"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/ivAddLock_Main"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@mipmap/add_lock_logo"/>
+
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/filter"
+                        android:gravity="center_vertical|right"
+                        android:textSize="@dimen/button_font_size"/>
+
+                    <Spinner
+                        android:id="@+id/spFilterLocks_Main"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2">
+
+                    </Spinner>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight=".25"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight=".25"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/lockRecyclerView_locks"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="9.5"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight=".5"/>
+
+                <Button
+                    android:id="@+id/btnSyncLockStatus_Main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0px"
+                    android:layout_weight="1.25"
+                    android:paddingTop="@dimen/padding_medium"
+                    android:paddingBottom="@dimen/padding_medium"
+                    android:paddingLeft="@dimen/padding_ultra"
+                    android:paddingRight="@dimen/padding_ultra"
+                    android:text="@string/sync_lock_status"
+                    android:textSize="@dimen/button_font_size"
+                    android:layout_gravity="right"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!--
+        REPORTS layout: Do audit, Generate Reports
+        -->
+        <LinearLayout
+            android:id="@+id/llReportsScreen_Main"
+            android:layout_alignParentTop="true"
+            android:padding="@dimen/padding_small"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="9"
+            android:orientation="vertical"
+            android:weightSum="15">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight=".05"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="REPORTS"
+                android:textSize="@dimen/title_font_size"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight=".15"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1.5"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <Button
+                    android:id="@+id/btnCurStatus_Reports"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_cur_status"
+                    android:textSize="@dimen/button_font_size"/>
+
+                <Spinner
+                    android:id="@+id/spLockFuncTypeFilter_Reports"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/spLockNames_Reports"
+                    android:visibility="gone"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                </Spinner>
+
+                <ProgressBar
+                    android:id="@+id/progressBar_Reports"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="32dp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1.5"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <Button
+                    android:id="@+id/btnSharedStatus_Reports"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_shared_status"
+                    android:textSize="@dimen/button_font_size"/>
+
+                <Spinner
+                    android:id="@+id/spSharedStatus_Reports"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                </Spinner>
+
+                <Button
+                    android:id="@+id/btnAssignedStatus_Reports"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_assigned_status"
+                    android:textSize="@dimen/button_font_size"/>
+
+                <Spinner
+                    android:id="@+id/spAssignedStatus_Reports"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                </Spinner>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight=".15"/>
+
+            <LinearLayout
+                android:id="@+id/llAuditTrails_Reports"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="9"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvName_Reports"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/button_font_size"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnExport_Reports"
+                            android:layout_width="0px"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="@string/button_export"
+                            android:textSize="@dimen/button_font_size"
+                            android:padding="@dimen/padding_medium"/>
+
+                        <RadioGroup
+                            android:id="@+id/rdgpExport_Reports"
+                            android:layout_width="0px"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:visibility="gone"
+                                android:id="@+id/rdbtnInternalMem_Reports"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/rdbtn_internal_memory"
+                                android:textSize="@dimen/button_font_size"/>
+
+                            <RadioButton
+                                android:visibility="gone"
+                                android:id="@+id/rdbtnExternalMem_Reports"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/rdbtn_external_sd_card"
+                                android:textSize="@dimen/button_font_size"/>
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1.25"
+                    android:padding="@dimen/padding_small"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".45"
+                        android:text="Index"
+                        android:gravity="center"
+                        android:textSize="@dimen/label_font_size"/>
+
+                    <TextView
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/grey"/>
+
+                    <TextView
+                        android:id="@+id/tvLockName_Reports"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Lock Name"
+                        android:gravity="center"
+                        android:textSize="@dimen/label_font_size"/>
+
+                    <TextView
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/grey"/>
+
+                    <TextView
+                        android:id="@+id/tvLockFunc_Reports"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Functionality"
+                        android:gravity="center"
+                        android:textSize="@dimen/label_font_size"/>
+
+                    <TextView
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/grey"/>
+
+                    <TextView
+                        android:id="@+id/tvLockUsers_Reports"
+                        android:visibility="gone"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:text="Assigned User"
+                        android:gravity="center"
+                        android:textSize="@dimen/label_font_size"/>
+
+
+                    <TextView
+                        android:id="@+id/tvUserName_Reports"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.45"
+                        android:text="User Name"
+                        android:gravity="center"
+                        android:textSize="@dimen/label_font_size"/>
+
+                    <TextView
+                        android:id="@+id/vspUserName_reports"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/grey"/>
+
+
+                    <TextView
+                        android:id="@+id/tvLockAction_Reports"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".75"
+                        android:text="Action"
+                        android:gravity="center"
+                        android:textSize="@dimen/label_font_size"/>
+
+                    <TextView
+                        android:id="@+id/vspLockAction_reports"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/grey"/>
+
+
+                    <TextView
+                        android:id="@+id/tvAuditDT_Reports"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.25"
+                        android:text="Date Time"
+                        android:gravity="center"
+                        android:textSize="@dimen/label_font_size"/>
+
+                    <TextView
+                        android:id="@+id/vspAuditDT_reports"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/grey"/>
+
+                    <TextView
+                        android:id="@+id/tvCredType_Reports"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Cred. Type"
+                        android:gravity="center"
+                        android:textSize="@dimen/label_font_size"/>
+
+                    <TextView
+                        android:id="@+id/vspCredType_reports"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/grey"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey"/>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerViewReportRows_Reports"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="9"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--
+        SETTINGS layout: Scan for controller, Paired controller, Connect controller, Syncronize controller, update lock status
+        -->
+        <LinearLayout
+            android:id="@+id/llSettingsScreen_Main"
+            android:layout_alignParentTop="true"
+            android:padding="@dimen/padding_small"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="9"
+            android:orientation="vertical"
+            android:weightSum="14">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight=".5"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="SETTINGS"
+                android:textSize="@dimen/title_font_size"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight=".25"/>
+
+            <LinearLayout
+                android:id="@+id/btScanController_BT"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1.25"
+                android:weightSum="5"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_small">
+
+                <TextView
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/paired_status"
+                    android:textColor="@color/red"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/label_font_size"/>
+
+
+                <TextView
+                    android:id="@+id/tvPairedBleControllerStatus_BT"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:text="@string/no_paired_controller"
+                    android:gravity="center|left"
+                    android:textSize="@dimen/label_font_size"/>
+
+                <Button
+                    android:id="@+id/btnScanController_Settings"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/button_scan_controller"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btSetController_BT"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1.25"
+                android:weightSum="5"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_small">
+
+                <TextView
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/controller_ip_address"
+                    android:textColor="@color/red"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/label_font_size"/>
+
+
+                <LinearLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/etIPAddress_Part1_BT"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:imeOptions="actionNext"
+                        android:gravity="center"
+                        android:textSize="@dimen/label_font_size"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=":"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/label_font_size"/>
+
+                    <EditText
+                        android:id="@+id/etIPAddress_Part2_BT"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:imeOptions="actionNext"
+                        android:gravity="center"
+                        android:textSize="@dimen/label_font_size"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=":"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/label_font_size"/>
+
+                    <EditText
+                        android:id="@+id/etIPAddress_Part3_BT"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:imeOptions="actionNext"
+                        android:gravity="center"
+                        android:textSize="@dimen/label_font_size"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=":"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/label_font_size"/>
+
+                    <EditText
+                        android:id="@+id/etIPAddress_Part4_BT"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:imeOptions="actionDone"
+                        android:gravity="center"
+                        android:textSize="@dimen/label_font_size"/>
+
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/btnSetControllerIP_Settings"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/button_set_controllerIP"/>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="8" />
+
+
+
+            <android.support.v4.widget.NestedScrollView
+                android:id="@+id/scan_controller_screen"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="8">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/llScanDevice_BT"
+                        android:visibility="invisible"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvScanning_BT"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/scanning"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/progressBar_BT"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="32dp" />
+
+                    </LinearLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerViewDevices_BT"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/llScanDevice_BT"/>
+
+
+                </RelativeLayout>
+            </android.support.v4.widget.NestedScrollView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@android:color/darker_gray"/>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_small">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnSyncController_Settings"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/button_sync_server"/>
+
+                    <Button
+                        android:id="@+id/btnGetLockStatus_Settings"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/button_get_lock_status"/>
+
+                    <Button
+                        android:id="@+id/btnEmptyAudit_Settings"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/button_empty_all_audits" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnDownloadDB_Settings"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/download_db"/>
+
+                    <Button
+                        android:id="@+id/btnRestoreDB_Settings"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/restore_db"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

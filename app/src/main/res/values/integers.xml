@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="max_lock_serial_limit">4</integer>
+    <integer name="max_lock_name_limit">16</integer>
+    <integer name="max_lock_location_limit">16</integer>
+    <integer name="max_lock_notes_limit">20</integer>
+
+
+</resources>

@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+// for annotation processor such as Dagger or Data binding
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    defaultConfig {
+        applicationId "com.digilock.nl.tablet"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        // every hockeyapp release increment this number
+        versionCode 1
+        versionName "v0.1.8"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [HOCKEYAPP_APP_ID: "a15c0b81c361404581116c6547947956"]
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+            returnDefaultValues = true
+        }
+    }
+    androidExtensions {
+        experimental = true
+    }
+    compileSdkVersion 26
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation supportDependencies.kotlin
+    implementation supportDependencies.appcompat
+    implementation supportDependencies.constraintLayout
+    implementation supportDependencies.gson
+    implementation supportDependencies.retrofit
+    implementation supportDependencies.retrofitAdapter
+    implementation supportDependencies.retrofitConverter
+    implementation supportDependencies.rxjava
+    implementation supportDependencies.rxandroid
+    implementation supportDependencies.dagger2
+    implementation supportDependencies.dagger2Support
+    implementation supportDependencies.design
+    implementation supportDependencies.room
+    implementation supportDependencies.roomRxJava
+    implementation(supportDependencies.awsMobileClient) { transitive = true }
+    implementation supportDependencies.awsS3
+    implementation supportDependencies.awsCognito
+    implementation supportDependencies.stepProgress
+    implementation supportDependencies.cardView
+    implementation supportDependencies.stetho
+    // for testing distribution
+    implementation supportDependencies.hockeyapp
+    implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    kapt supportDependencies.dagger2Processor
+    kapt supportDependencies.dagger2ProcessorSupport
+    annotationProcessor supportDependencies.roomCompiler
+    kapt supportDependencies.roomCompiler
+    testImplementation supportDependencies.junit
+    testImplementation supportDependencies.robolectric
+    testImplementation supportDependencies.mockito
+    testImplementation supportDependencies.mockitoCore
+    androidTestImplementation supportDependencies.runner
+    androidTestImplementation supportDependencies.espresso
+    androidTestImplementation supportDependencies.testAnnotation
+    androidTestImplementation supportDependencies.testRunner
+    androidTestImplementation supportDependencies.roomTesting
+    androidTestImplementation supportDependencies.coreTesting
+    debugImplementation supportDependencies.leakcanary
+    releaseImplementation supportDependencies.leakcanaryRelease
+    debugImplementation supportDependencies.leakcanarySupport
+
+    implementation project(':arpcachereader')
+
+}

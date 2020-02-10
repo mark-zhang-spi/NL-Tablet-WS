@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_medium"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title_LockInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/title_font_size"
+        android:text="@string/add_lock"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight=".25"/>
+
+    <Spinner
+        android:id="@+id/spLockTypes_LockInfo"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight=".8">
+
+    </Spinner>
+
+    <Spinner
+        android:id="@+id/spLockFuncs_LockInfo"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight=".8">
+
+    </Spinner>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:textSize="@dimen/label_font_size"
+        android:text="@string/select_credentials"
+        android:gravity="center_vertical"/>
+
+    <LinearLayout
+        android:id="@+id/llRFID_LockInfo"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <CheckBox
+            android:id="@+id/chbRFID_LockInfo"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"/>
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:text="@string/credential_rfid"
+                android:textSize="@dimen/button_font_size"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:text="@string/rfid_usage"
+                android:textSize="@dimen/label_font_size"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight=".05"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <CheckBox
+            android:id="@+id/chbMobileID_LockInfo"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"/>
+
+        <LinearLayout
+            android:id="@+id/llMobileIDDesc_LockInfo"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:text="@string/credential_mobile_id"
+                android:textSize="@dimen/button_font_size"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:text="@string/mobile_id_usage"
+                android:textSize="@dimen/label_font_size"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight=".05"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <CheckBox
+            android:id="@+id/chbUserPin_LockInfo"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"/>
+
+        <LinearLayout
+            android:id="@+id/llUserPinDesc_LockInfo"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:text="@string/credential_user_pin"
+                android:textSize="@dimen/button_font_size"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:text="@string/user_pin_code_usage"
+                android:textSize="@dimen/label_font_size"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1.55"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight=".70"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight=".70"
+                android:text="@string/lock_name"
+                android:textSize="@dimen/label_font_size"
+                android:gravity="bottom"/>
+
+            <EditText
+                android:id="@+id/etLockName_LockInfo"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight=".8"
+                android:textSize="@dimen/label_font_size"
+                android:maxLength="@integer/max_lock_name_limit"
+                android:maxLines="1"
+                android:inputType="text"
+                android:imeOptions="actionNext"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight=".05"/>
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight=".75"
+                android:text="@string/lock_serial"
+                android:textSize="@dimen/label_font_size"
+                android:gravity="bottom"/>
+
+            <EditText
+                android:id="@+id/etLockSN_LockInfo"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight=".8"
+                android:inputType="number"
+                android:textSize="@dimen/label_font_size"
+                android:maxLength="@integer/max_lock_serial_limit"
+                android:imeOptions="actionNext"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight=".75"
+        android:text="@string/location"
+        android:textSize="@dimen/label_font_size"
+        android:gravity="bottom"/>
+
+    <EditText
+        android:id="@+id/etLocation_LockInfo"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight=".8"
+        android:textSize="@dimen/label_font_size"
+        android:maxLength="@integer/max_lock_location_limit"
+        android:maxLines="1"
+        android:inputType="text"
+        android:imeOptions="actionNext"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight=".75"
+        android:text="@string/notes"
+        android:textSize="@dimen/label_font_size"
+        android:gravity="bottom"/>
+
+    <EditText
+        android:id="@+id/etDesc_LockInfo"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight=".8"
+        android:textSize="@dimen/label_font_size"
+        android:maxLength="@integer/max_lock_notes_limit"
+        android:maxLines="1"
+        android:inputType="text"
+        android:imeOptions="actionDone"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight=".25"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/btnDelete_LockInfo"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/padding_large"
+            android:paddingRight="@dimen/padding_large"
+            android:text="@string/button_delete"
+            android:textSize="@dimen/button_font_size"
+            android:layout_toLeftOf="@+id/btnCancel_LockInfo"/>
+
+        <Button
+            android:id="@+id/btnCancel_LockInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/padding_large"
+            android:paddingRight="@dimen/padding_large"
+            android:text="@string/button_cancel"
+            android:textSize="@dimen/button_font_size"
+            android:layout_toLeftOf="@+id/btnAdd_LockInfo"/>
+
+        <Button
+            android:id="@+id/btnAdd_LockInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/padding_ultra"
+            android:paddingRight="@dimen/padding_ultra"
+            android:text="@string/button_add"
+            android:textSize="@dimen/button_font_size"
+            android:layout_alignParentRight="true"/>
+
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight=".5"/>
+
+</LinearLayout>

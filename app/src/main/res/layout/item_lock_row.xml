@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_medium">
+
+
+    <LinearLayout
+        android:id="@+id/llLockInfo_LockRow"
+        android:layout_width="0px"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/lock_item_logo"
+            android:layout_gravity="left" />
+
+        <TextView
+            android:id="@+id/tvName_LockRow"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:textSize="@dimen/button_font_size"
+            android:gravity="center_vertical"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvState_LockRow"
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"/>
+
+    <ImageView
+        android:id="@+id/ivState_LockRow"
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_weight=".5"/>
+
+</LinearLayout>

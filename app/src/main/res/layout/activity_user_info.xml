@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_medium"
+    android:orientation="vertical"
+    android:weightSum="13">
+
+    <TextView
+        android:id="@+id/title_UserInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/title_font_size"
+        android:text="@string/add_user"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight=".25"/>
+
+    <LinearLayout
+        android:id="@+id/llWaitRFID_UserInfo"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="12.75"
+        android:orientation="vertical"
+        android:weightSum="12.75">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:text="@string/wait_for_rfid_card"
+            android:textSize="@dimen/button_font_size"
+            android:layout_gravity="center"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:id="@+id/etRFID_SN_UserInfo"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:textSize="@dimen/label_font_size"/>
+
+        <TextView
+            android:id="@+id/tvMessage_RFID_UserInfo"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="2"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".25"/>
+
+        <Button
+            android:id="@+id/btn_cancel_RFID_UserInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/padding_ultra"
+            android:paddingRight="@dimen/padding_ultra"
+            android:text="@string/button_cancel"
+            android:textSize="@dimen/button_font_size"
+            android:layout_alignParentRight="true" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llWait_PinCode_UserInfo"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="12.75"
+        android:orientation="vertical"
+        android:weightSum="12.75">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:text="@string/wait_for_pin_code"
+            android:textSize="@dimen/button_font_size"
+            android:layout_gravity="center"/>
+
+        <ProgressBar
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:id="@+id/etPinCode_UserInfo"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:textSize="@dimen/label_font_size"/>
+
+        <android.inputmethodservice.KeyboardView
+            android:id="@+id/kbPinCode_UserInfo"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="2"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".75"/>
+
+        <Button
+            android:id="@+id/btn_cancel_PinCode_UserInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="0px"
+            android:layout_weight="1.25"
+            android:paddingLeft="@dimen/padding_ultra"
+            android:paddingRight="@dimen/padding_ultra"
+            android:text="@string/button_cancel"
+            android:textSize="@dimen/button_font_size"
+            android:layout_gravity="right"/>
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/llWait_MobileID_UserInfo"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="12.75"
+        android:orientation="vertical"
+        android:weightSum="12.75">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:text="@string/wait_for_mobile_id"
+            android:textSize="@dimen/button_font_size"
+            android:layout_gravity="center"/>
+
+        <ProgressBar
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/label_advertisingStatus"
+                    android:text="@string/label_advertisingStatus"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tvAdvertisingStatus"
+                    android:layout_marginBottom="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/label_connectionStatus"
+                    android:text="@string/label_connectionStatus"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tvConnectionStatus"
+                    android:layout_marginBottom="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/mobile_id"
+                android:textSize="@dimen/label_font_size"/>
+
+            <TextView
+                android:id="@+id/tvMobileID_UserInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/label_font_size"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="3.75"/>
+
+        <Button
+            android:id="@+id/btn_cancel_MobileID_UserInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/padding_ultra"
+            android:paddingRight="@dimen/padding_ultra"
+            android:text="@string/button_cancel"
+            android:textSize="@dimen/button_font_size"
+            android:layout_gravity="left"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/llTEST_UserInfo"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="12.75"
+        android:orientation="vertical"
+        android:weightSum="12.75">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llWaitCredential_MSG_UserInfo"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="12.75"
+        android:orientation="vertical"
+        android:weightSum="12.75">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".5"/>
+
+        <TextView
+            android:id="@+id/tvWaitCred_MSG_UserInfo"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:textSize="@dimen/label_font_size"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".5"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_tryagain_wait_credential_UserInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/button_try_again"
+                android:textSize="@dimen/button_font_size"
+                android:layout_toLeftOf="@+id/btn_transfer_wait_credential_UserInfo" />
+
+            <Button
+                android:id="@+id/btn_transfer_wait_credential_UserInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/button_transfer"
+                android:textSize="@dimen/button_font_size"
+                android:layout_toLeftOf="@+id/btn_cancel_wait_credential_UserInfo" />
+
+            <Button
+                android:id="@+id/btn_cancel_wait_credential_UserInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/padding_ultra"
+                android:paddingRight="@dimen/padding_ultra"
+                android:text="@string/button_cancel"
+                android:textSize="@dimen/button_font_size"
+                android:layout_alignParentRight="true" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".5"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llPrimary_UserInfo"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="12.75"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".75"
+            android:orientation="horizontal"
+            android:weightSum="2.25">
+
+            <EditText
+                android:id="@+id/etFstName_UserInfo"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="@string/hint_first_name"
+                android:textSize="@dimen/label_font_size"
+                android:maxLines="1"
+                android:inputType="text"
+                android:imeOptions="actionNext"/>
+
+            <TextView
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight=".25"/>
+
+            <EditText
+                android:id="@+id/etLstName_UserInfo"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="@string/hint_last_name"
+                android:textSize="@dimen/label_font_size"
+                android:maxLines="1"
+                android:inputType="text"
+                android:imeOptions="actionNext"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/etDept_UserInfo"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".75"
+            android:hint="@string/hint_department"
+            android:textSize="@dimen/label_font_size"
+            android:maxLines="1"
+            android:inputType="text"
+            android:imeOptions="actionNext"/>
+
+        <EditText
+            android:id="@+id/etEmail_UserInfo"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".75"
+            android:hint="@string/hint_email"
+            android:textSize="@dimen/label_font_size"
+            android:maxLines="1"
+            android:inputType="text"
+            android:imeOptions="actionNext"/>
+
+        <EditText
+            android:id="@+id/etPhoneNum_UserInfo"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".75"
+            android:hint="@string/hint_phone_number"
+            android:textSize="@dimen/label_font_size"
+            android:maxLines="1"
+            android:inputType="text"
+            android:imeOptions="actionNext"/>
+
+        <EditText
+            android:id="@+id/etNotes_UserInfo"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".75"
+            android:hint="@string/hint_notes"
+            android:textSize="@dimen/label_font_size"
+            android:maxLines="1"
+            android:inputType="text"
+            android:imeOptions="actionDone"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".75"
+            android:textSize="@dimen/label_font_size"
+            android:text="@string/select_credentials"
+            android:gravity="center_vertical"/>
+
+        <LinearLayout
+            android:id="@+id/llRFID_UserInfo"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <CheckBox
+                android:id="@+id/chbRFID_UserInfo"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"/>
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:text="@string/credential_rfid"
+                    android:textSize="@dimen/button_font_size"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:text="@string/rfid_usage"
+                    android:textSize="@dimen/label_font_size"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".05"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <CheckBox
+                android:id="@+id/chbMobileID_UserInfo"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"/>
+
+            <LinearLayout
+                android:id="@+id/llMobileIDDesc_UserInfo"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:text="@string/credential_mobile_id"
+                    android:textSize="@dimen/button_font_size"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:text="@string/mobile_id_usage"
+                    android:textSize="@dimen/label_font_size"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".05"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <CheckBox
+                android:id="@+id/chbUserPin_UserInfo"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"/>
+
+            <LinearLayout
+                android:id="@+id/llUserPinDesc_UserInfo"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:text="@string/credential_user_pin"
+                    android:textSize="@dimen/button_font_size"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:text="@string/rfid_usage"
+                    android:textSize="@dimen/label_font_size"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".15"/>
+
+        <TextView
+            android:id="@+id/tvAssignLocks_lockinfo"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".75"
+            android:text="@string/assign_locks"
+            android:textSize="@dimen/label_font_size"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView_userinfo"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="3"
+            android:layout_below="@id/tvAssignLocks_lockinfo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".25"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".85">
+
+            <Button
+                android:id="@+id/btnDisable_UserInfo"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/padding_large"
+                android:paddingRight="@dimen/padding_large"
+                android:text="@string/button_disable"
+                android:textSize="@dimen/button_font_size"
+                android:layout_toLeftOf="@+id/btnCancel_UserInfo" />
+
+
+            <Button
+                android:id="@+id/btnCancel_UserInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/padding_large"
+                android:paddingRight="@dimen/padding_large"
+                android:text="@string/button_cancel"
+                android:textSize="@dimen/button_font_size"
+                android:layout_toLeftOf="@+id/btnAdd_UserInfo" />
+
+            <Button
+                android:id="@+id/btnAdd_UserInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/padding_ultra"
+                android:paddingRight="@dimen/padding_ultra"
+                android:text="@string/button_add"
+                android:textSize="@dimen/button_font_size"
+                android:layout_alignParentRight="true" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

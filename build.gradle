@@ -1,0 +1,102 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlinVersion = '1.3.10'
+
+    repositories {
+        google()
+        jcenter()
+        
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        
+    }
+}
+
+// make properties available for all modules in the project
+ext {
+    compileSdkVersion = 28
+    minSdkVersion = 25
+    targetSdkVersion = 28
+
+    supportLibraryVersion = '26.1.0'
+    constraintLayoutVersion = '1.0.2'
+    gsonVersion = '2.8.2'
+    retrofitVersion = '2.3.0'
+    retrofitAdapterVersion = '2.3.0'
+    retrofitConverterVersion = '2.3.0'
+    daggerVersion = '2.11'
+    rxjavaVersion = '2.1.8'
+    rxandroidVersion = '2.0.2'
+    designVersion = '27.0.2'
+    roomVersion = '1.0.0'
+    stethoVersion = '1.5.0'
+    junitVersion = '4.12'
+    testAnnotationVersion = '24.0.0'
+    testRunnerVersion = '0.5'
+    robolectricVersion = '3.6.1'
+    runnerVersion = '1.0.1'
+    espressoVersion = '3.0.1'
+    coreTestingVersion = '1.0.0'
+    mockitoVersion = '2.8.47'
+    hockeyAppVersion = '5.1.0'
+    awsVersion = '2.6.+'
+    stepPregressVersion = '0.0.9'
+    leakcanaryVersion = '1.6.1'
+
+    supportDependencies = [
+            kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
+            appcompat: "com.android.support:appcompat-v7:${supportLibraryVersion}",
+            constraintLayout: "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}",
+            gson: "com.google.code.gson:gson:${gsonVersion}",
+            retrofit: "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitAdapter: "com.squareup.retrofit2:adapter-rxjava2:${retrofitAdapterVersion}",
+            retrofitConverter: "com.squareup.retrofit2:converter-gson:${retrofitConverterVersion}",
+            rxjava: "io.reactivex.rxjava2:rxjava:${rxjavaVersion}",
+            rxandroid: "io.reactivex.rxjava2:rxandroid:${rxandroidVersion}",
+            room: "android.arch.persistence.room:runtime:${roomVersion}",
+            roomRxJava: "android.arch.persistence.room:rxjava2:${roomVersion}",
+            roomCompiler: "android.arch.persistence.room:compiler:${roomVersion}",
+            roomTesting: "android.arch.persistence.room:testing:${roomVersion}",
+            design: "com.android.support:design:${designVersion}",
+            dagger2: "com.google.dagger:dagger:${daggerVersion}",
+            dagger2Support: "com.google.dagger:dagger-android-support:${daggerVersion}",
+            dagger2Processor: "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger2ProcessorSupport: "com.google.dagger:dagger-android-processor:${daggerVersion}",
+            stetho: "com.facebook.stetho:stetho:${stethoVersion}",
+            junit: "junit:junit:${junitVersion}",
+            testAnnotation: "com.android.support:support-annotations:${testAnnotationVersion}",
+            testRunner: "com.android.support.test:runner:${testRunnerVersion}",
+            mockito: "org.mockito:mockito-android:${mockitoVersion}",
+            mockitoCore: "org.mockito:mockito-core:${mockitoVersion}",
+            robolectric: "org.robolectric:robolectric:${robolectricVersion}",
+            runner: "com.android.support.test:runner:${runnerVersion}",
+            espresso: "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+            coreTesting: "android.arch.core:core-testing:${coreTestingVersion}",
+            hockeyapp: "net.hockeyapp.android:HockeySDK:${hockeyAppVersion}",
+            awsMobileClient: "com.amazonaws:aws-android-sdk-mobile-client:${awsVersion}@aar",
+            awsS3: "com.amazonaws:aws-android-sdk-s3:${awsVersion}",
+            awsCognito: "com.amazonaws:aws-android-sdk-cognito:${awsVersion}",
+            stepProgress: "com.kofigyan.stateprogressbar:stateprogressbar:${stepPregressVersion}",
+            cardView: "com.android.support:cardview-v7:${designVersion}",
+            leakcanary: "com.squareup.leakcanary:leakcanary-android:${leakcanaryVersion}",
+            leakcanaryRelease: "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanaryVersion}",
+            leakcanarySupport: "com.squareup.leakcanary:leakcanary-support-fragment:${leakcanaryVersion}"
+    ]
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

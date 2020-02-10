@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright (C) 2014 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="app_name">Digilock Management System - V1.0 WS</string>
+
+    <!--  BLE module -->
+    <string name="error_bluetooth_is_disabled">Bluetooth is not enabled on device, please check and enable it.</string>
+    <string name="error_bluetooth_is_unsupported">Bluetooth is not supported by this device.</string>
+    <string name="error_ble_is_unsupported">Bluetooth low energy is not supported by this device.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title_main">Network Lock Mobile</string>
+
+    <string name="fun_limted">Functionality limited</string>
+    <string name="since_perm_not_granted">Since location access has not been granted, this app will not be able to work correctly.</string>
+    <string name="need_loc_access">This app needs location access</string>
+    <string name="please_grant_loc_access">Please grant location access so this app can detect bluetooth devices.</string>
+    <string name="connecting">Connecting..</string>
+    <string name="found">Found devices</string>
+    <string name="make_discoverable">Make Visible</string>
+    <string name="bluetooth_not_enabled">Bluetooth not enabled</string>
+    <string name="bluetooth_on">Bluetooth is enabled</string>
+    <string name="connected_to">Connected to: </string>
+    <string name="write_something">Write something..</string>
+    <string name="test_message">Test message ?</string>
+    <string name="test_stamp">15 Jun, 2017, 4:25 A.M.</string>
+    <string name="scanning">Scanning..</string>
+
+
+    <string name="no_lock_yet">No locks added</string>
+    <string name="add_lock">Add Lock</string>
+    <string name="edit_lock">Edit Lock</string>
+    <string name="button_add_lock">ADD LOCK</string>
+
+    <string name="no_user_yet">Start by adding users</string>
+    <string name="add_user">Add User</string>
+    <string name="edit_user">Edit User</string>
+    <string name="button_add_user">ADD USER</string>
+
+    <string name="select_credentials">Select Credentials</string>
+    <string name="admin_passcode">Admin Passcode:</string>
+
+    <string name="credential_rfid">RFID</string>
+    <string name="credential_mobile_id">Mobile ID</string>
+    <string name="credential_user_pin">User Pin Code</string>
+    <string name="rfid_usage">Allow card access</string>
+    <string name="mobile_id_usage">Allow Mobile access</string>
+    <string name="user_pin_code_usage">Allow access with assigned pin code</string>
+    <string name="lock_name">Lock Name:</string>
+    <string name="lock_serial">Lock SN:</string>
+    <string name="location">Location:</string>
+    <string name="notes">Notes</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_disable">Disable</string>
+    <string name="button_delete">Delete</string>
+    <string name="button_add">Add</string>
+    <string name="button_done">Done</string>
+    <string name="button_confirm">Confirm</string>
+    <string name="button_try_again">Try Again</string>
+    <string name="button_transfer">Transfer</string>
+    <string name="filter">Filter By:</string>
+    <string name="sort">Sort By:</string>
+    <string name="button_save">Save</string>
+    <string name="button_export">Export</string>
+
+    <string name="mobile_id">Mobile ID:</string>
+
+    <!-- Bluetooth -->
+    <string name="bluetoothNotSupported">BLE Peripheral Simulator closing: Bluetooth Not Supported</string>
+    <string name="bluetoothNotEnabled">BLE Peripheral Simulator closing: Bluetooth is Not Enabled</string>
+    <string name="bluetoothAdvertisingNotSupported">BLE Peripheral Simulator closing: BLE Advertising Not Supported</string>
+
+    <string name="label_advertisingStatus">Advertising Status</string>
+    <string name="status_advertising">Advertising (Keep Screen On)</string>
+    <string name="status_notAdvertising">Not Advertising</string>
+    <string name="status_advDataTooLarge">Not Advertising. Advertisement is larger than 31 bytes.</string>
+    <string name="status_advFeatureUnsupported">Not Advertising. Advertising not supported.</string>
+    <string name="status_advInternalError">Not Advertising. Internal error occurred.</string>
+    <string name="status_advTooManyAdvertisers">Not Advertising. No advertising instance is available.</string>
+
+    <string name="label_connectionStatus">Connection Status</string>
+    <string name="status_devicesConnected">Devices Connected:</string>
+    <string name="status_errorWhenConnecting">An error occurred while connecting to a device. Error Code</string>
+
+    <string name="status_noLeAdv">LE Advertising is not available. Please pair with a device to be
+        discoverable.
+    </string>
+
+    <string name="notificationsEnabled">Notifications enabled</string>
+    <string name="notificationsNotEnabled">Notifications not enabled</string>
+
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="hint_department">Department</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_phone_number">Phone Number</string>
+    <string name="hint_notes">Notes</string>
+
+    <string name="assign_locks">Assign Locks</string>
+
+    <string name="wait_for_rfid_card">Waiting for RFID Card...</string>
+    <string name="wait_for_mobile_id">Waiting for Mobile ID...</string>
+    <string name="wait_for_pin_code">Waiting for PIN CODE...</string>
+
+    <string name="button_do_audit">Do Audit</string>
+    <string name="button_gen_reports">Generate Reports</string>
+
+    <string name="button_cur_status">Current Status</string>
+    <string name="button_shared_status">Shared Status</string>
+    <string name="button_assigned_status">Assigned Status</string>
+
+    <string name="button_sync_server">Sync Controller </string>
+    <string name="button_empty_all_audits">Remove All Audits</string>
+    <string name="button_get_lock_status">Get Lock Status</string>
+
+    <string name="rdbtn_internal_memory">Internal</string>
+    <string name="rdbtn_external_sd_card">SD Card</string>
+
+    <string name="audit_trail">Audit Trails</string>
+    <string name="sync_lock_status">Sync Lock Status</string>
+
+    <string name="download_db">DownLoad DB</string>
+    <string name="restore_db">Restore DB</string>
+
+    <string name="enter_confirm_passcode">Enter Confirmation Passcode: </string>
+
+    <string name="paired_status">Paired Status:</string>
+    <string name="button_scan_controller">Scan Controller</string>
+    <string name="no_paired_controller">No Paired Controller</string>
+    <string name="paired_controller_not_start">Paired controller not started.</string>
+
+    <string name="controller_ip_address">Controller IP Address:</string>
+    <string name="button_set_controllerIP">Set Controller IP</string>
+    <string name="ip_field_empty">IP field is empty.</string>
+    <string name="ip_field_too_large">IP field must not large than 255.</string>
+
+</resources>
