@@ -12,11 +12,14 @@ import com.digilock.nl.tablet.data.*
 import com.digilock.nl.tablet.database.dao.*
 import com.digilock.nl.tablet.util.*
 import com.digilock.nl.tablet.util.constants.*
+import com.digilock.nl.tablet.websocket.WsClientService.Companion.LOG_TAG
 import io.reactivex.Flowable
 import io.reactivex.Observable
 import java.io.*
 import java.lang.Exception
 import java.net.InetAddress
+import java.net.InetSocketAddress
+import java.net.Socket
 import java.nio.channels.FileChannel
 import java.util.*
 import kotlin.collections.ArrayList
@@ -1331,6 +1334,15 @@ override fun downloadDB(context: Context): Observable<Boolean> {
     override fun getPairedControllerName(): String = sysPref.getString(PAIRED_CONTROLLER_NAME, "")
 
     override fun pingNetwork(context: Context): Observable<Boolean> {
+        try {
+            val file = File("proc/net/arp")
+            if (file.exists()) {
+                file.delete()
+            }
+        } catch(ex: Exception) {
+            Log.i(LOG_TAG, "Failed to delete file: proc/net/arp")
+        }
+
         return Observable.just(true)
                 .doOnNext {
                     try {
@@ -1343,7 +1355,12 @@ override fun downloadDB(context: Context): Observable<Boolean> {
                             for (i in 1..254) {
                                 val host = "$subnet.$i"
 
-                                if (InetAddress.getByName(host).isReachable(50)) {
+                                if(i == 107) {
+                                    Log.i(LOG_TAG, "IP accessable: $host")
+                                }
+
+ //                               if (InetAddress.getByName(host).isReachable(50)) {
+                                if(myAddressReachable(InetAddress.getByName(host).toString(), 38301, 50)) {
                                     Log.i(LOG_TAG, "IP accessable: $host")
                                 }
                             }
@@ -1353,6 +1370,26 @@ override fun downloadDB(context: Context): Observable<Boolean> {
                         Log.i(LOG_TAG, "Error: ${e.message}")
                     }
                 }
+    }
+
+
+
+    private fun myAddressReachable(address: String, port: Int, timeout: Int): Boolean {
+        try {
+            try {
+                val socket =  Socket()
+                socket.connect(InetSocketAddress(address, port), timeout);
+
+                return true
+            } catch(ex: IOException) {
+                Log.i(LOG_TAG, "Address $address is not accessable")
+                return false
+            }
+        } catch(ex: IOException) {
+            Log.i(LOG_TAG, "Address $address is not accessable")
+            return false
+        }
+
     }
 
     private fun getSubnetAddress(address: Int): String {
