@@ -91,5 +91,5 @@ interface MainDataSource {
     fun downloadDB(context: Context): Observable<Boolean>
     fun restoreDB(context: Context): Observable<Boolean>
 
-    fun pingNetwork(context: Context): Observable<Boolean>
+    fun findConnectedDevices(): Observable<List<Pair<String, String>>>
 }

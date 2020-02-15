@@ -3,7 +3,6 @@ package com.digilock.nl.tablet.main
 import android.content.Context
 import android.content.SharedPreferences
 import android.media.MediaScannerConnection
-import android.net.wifi.WifiManager
 import android.os.Environment
 import android.util.Log
 import com.digilock.nl.tablet.bluetooth.Report
@@ -12,10 +11,19 @@ import com.digilock.nl.tablet.data.*
 import com.digilock.nl.tablet.database.dao.*
 import com.digilock.nl.tablet.util.*
 import com.digilock.nl.tablet.util.constants.*
+import com.digilock.nl.tablet.websocket.BODY_MAC_ADDRESS
+import com.digilock.nl.tablet.websocket.CMD_NL_DISCOVERY
+import com.digilock.nl.tablet.websocket.CMD_NL_STOP_RESPONSE
+import com.digilock.nl.tablet.websocket.JSON_CMD_TYPE
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import io.reactivex.Flowable
 import io.reactivex.Observable
+import org.json.JSONObject
 import java.io.*
 import java.lang.Exception
+import java.net.DatagramPacket
+import java.net.DatagramSocket
 import java.net.InetAddress
 import java.nio.channels.FileChannel
 import java.util.*
@@ -1330,28 +1338,64 @@ override fun downloadDB(context: Context): Observable<Boolean> {
 
     override fun getPairedControllerName(): String = sysPref.getString(PAIRED_CONTROLLER_NAME, "")
 
-    override fun pingNetwork(context: Context): Observable<Boolean> {
+    override fun findConnectedDevices(): Observable<List<Pair<String, String>>> {
+        val devices = ArrayList<Pair<String, String>>()
+
         return Observable.just(true)
-                .doOnNext {
+                .map {
                     try {
-                        val mWifiManager = context.getSystemService(Context.WIFI_SERVICE) as WifiManager
-                        val mWifiInfo = mWifiManager.getConnectionInfo()
-                        val subnet = getSubnetAddress(mWifiManager.getDhcpInfo().gateway)
+                        val broadcastAddr: InetAddress = InetAddress.getByName("255.255.255.255")
 
+                        val jsonObject = JSONObject()
+                        jsonObject.put(JSON_CMD_TYPE, CMD_NL_DISCOVERY)
+                        val msg = jsonObject.toString()
 
+                        val socket = DatagramSocket()
+                        socket.broadcast = true
 
-                            for (i in 1..254) {
-                                val host = "$subnet.$i"
+                        var bFindNextDevice = true
+                        while(bFindNextDevice) {
+                            val packet = DatagramPacket(msg.toByteArray(), msg.length, broadcastAddr, 9001)
+                            socket.send(packet)
 
-                                if (InetAddress.getByName(host).isReachable(50)) {
-                                    Log.i(LOG_TAG, "IP accessable: $host")
+                            val lmessage = ByteArray(4096)
+                            val rcvPacket = DatagramPacket(lmessage, lmessage.size)
+
+                            val waitStart = System.currentTimeMillis()
+                            bFindNextDevice = false
+                            while((System.currentTimeMillis() - waitStart) < CONNECT_DEVICE_WAIT_PERIOD) {
+                                socket.receive(rcvPacket)
+                                val stringData = String(lmessage, 0, rcvPacket.getLength())
+
+                                if(stringData.length > 0) {
+                                    val jsonObject: JsonObject = JsonParser().parse(stringData).getAsJsonObject()
+                                    when(jsonObject.get(JSON_CMD_TYPE).asString) {
+                                        CMD_NL_DISCOVERY -> {
+                                            val ipAddr: InetAddress = packet.address
+                                            val macAddress = jsonObject.get(BODY_MAC_ADDRESS).asString
+
+                                            devices.add(Pair(ipAddr.toString(), macAddress))
+
+                                            val jsonObject = JSONObject()
+                                            jsonObject.put(JSON_CMD_TYPE, CMD_NL_STOP_RESPONSE)
+                                            val msg = jsonObject.toString()
+
+                                            val sendPacket = DatagramPacket(msg.toByteArray(), msg.length, rcvPacket.address, 9001)
+                                            socket.send(sendPacket)
+                                        }
+                                    }
+
+                                    bFindNextDevice = true
                                 }
                             }
-
+                        }
                     }
                     catch(e: Exception){
                         Log.i(LOG_TAG, "Error: ${e.message}")
+                        throw Exception(e.message)
                     }
+
+                 return@map devices
                 }
     }
 
