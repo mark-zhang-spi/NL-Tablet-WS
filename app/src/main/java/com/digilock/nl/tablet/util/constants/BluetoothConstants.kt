@@ -12,7 +12,7 @@ const val REQUEST_ENABLE_BT = 3
 
 
 const val WS_PACKET_SIZE = 64
-const val PARAMETER_BYTES_SIZE = 57
+const val PARAMETER_BYTES_SIZE = 59
 
 const val PKT_HEADER: Byte = 0x7E
 const val PKT_TAIL: Byte = -0x56

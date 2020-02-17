@@ -841,7 +841,7 @@ class MainActivity: AppCompatActivity(),
     }
 
     /*
-        Websocket module
+        Websocket client module
      */
     var df: SimpleDateFormat = SimpleDateFormat("hh:mm:ss a", Locale.getDefault())
     private val mWsClientReceiver = object : BroadcastReceiver() {
