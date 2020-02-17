@@ -40,6 +40,7 @@ const val CMD_PACKET = "Packet command"
 const val CMD_NL_DISCOVERY = "NL Device Discovery"
 const  val CMD_NL_STOP_RESPONSE = "NL Stop Response"
 const  val BODY_MAC_ADDRESS = "MAC address"
+const  val BODY_IP_ADDRESS = "IP address"
 
 
 
