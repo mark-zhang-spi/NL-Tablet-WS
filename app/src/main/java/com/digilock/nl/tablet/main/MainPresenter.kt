@@ -12,7 +12,6 @@ import com.digilock.nl.tablet.data.Lock
 import com.digilock.nl.tablet.data.User
 import com.digilock.nl.tablet.util.*
 import com.digilock.nl.tablet.util.constants.*
-import com.github.bwixted.arpcachereader.ArpCacheReader
 import com.securitypeople.packagehold.util.scheduler.BaseSchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -651,27 +650,8 @@ class MainPresenter(private val view: MainContract.View,
                 .observeOn(scheduler.ui())
                 .subscribe(
                         {
-                            val arpCacheReader = ArpCacheReader()
-                            if(arpCacheReader.init(context)) {
-                                Log.i(LOG_TAG, "ARP init completed.")
-
-                                val devices = ArrayList<DeviceData>()
-                                val networkNodeMap = arpCacheReader.networkNodes
-                                for(entry in networkNodeMap.entries) {
-                                    val networkNode = entry.value
-
-                                    val device = networkNode.device
-                                    val mac = networkNode.mac
-                                    val ip = networkNode.ip
-
-                                    if(!mac .equals("00:00:00:00:00:00")) {
-                                        devices.add(DeviceData("Unknown", mac, ip))
-                                    }
-                                }
-
-                                view.stopScanController()
-                                view.updateControllerDevicesView(devices)
-                            }
+                            view.stopScanController()
+                            view.updateControllerDevicesView(it)
                         },
                         {
                             Log.i(LOG_TAG, "ARP init completed.")

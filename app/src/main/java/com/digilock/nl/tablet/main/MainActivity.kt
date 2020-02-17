@@ -5,14 +5,12 @@ import android.app.Activity
 import android.content.*
 import android.content.pm.PackageManager
 import android.graphics.Color
-import android.net.wifi.WifiManager
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.os.IBinder
 import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
-import android.support.v4.app.FragmentActivity
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -34,16 +32,12 @@ import com.digilock.nl.tablet.util.custom.ConfirmDialog
 import com.digilock.nl.tablet.websocket.*
 import com.securitypeople.packagehold.util.scheduler.SchedulerProvider
 import kotlinx.android.synthetic.main.activity_main.*
-import java.net.InetAddress
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 import kotlin.concurrent.scheduleAtFixedRate
 
-import com.github.bwixted.arpcachereader.*
-import okio.ByteString
-import java.nio.ByteBuffer
 
 
 class MainActivity: AppCompatActivity(),

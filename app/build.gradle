@@ -78,6 +78,4 @@ dependencies {
     releaseImplementation supportDependencies.leakcanaryRelease
     debugImplementation supportDependencies.leakcanarySupport
 
-    implementation project(':arpcachereader')
-
 }

@@ -1341,8 +1341,8 @@ override fun downloadDB(context: Context): Observable<Boolean> {
 
     override fun getPairedControllerName(): String = sysPref.getString(PAIRED_CONTROLLER_NAME, "")
 
-    override fun findConnectedDevices(): Observable<List<Pair<String, String>>> {
-        val devices = ArrayList<Pair<String, String>>()
+    override fun findConnectedDevices(): Observable<List<DeviceData>> {
+        val devices = ArrayList<DeviceData>()
 
         return Observable.just(true)
                 .map {
@@ -1375,7 +1375,7 @@ override fun downloadDB(context: Context): Observable<Boolean> {
                                         val ipAddr: InetAddress = packet.address
                                         val macAddress = jsonObject.get(BODY_MAC_ADDRESS).asString
 
-                                        devices.add(Pair(ipAddr.toString(), macAddress))
+                                        devices.add(DeviceData("Connected Device", ipAddr.toString(), macAddress))
 
                                         val jsonObject = JSONObject()
                                         jsonObject.put(JSON_CMD_TYPE, CMD_NL_STOP_RESPONSE)
@@ -1392,19 +1392,11 @@ override fun downloadDB(context: Context): Observable<Boolean> {
                     }
                     catch(e: Exception){
                         Log.i(LOG_TAG, "Error: ${e.message}")
-                        throw Exception(e.message)
                     }
 
                  return@map devices
                 }
     }
-
-    private fun getSubnetAddress(address: Int): String {
-        val ipString = String.format("%d.%d.%d", (address and 0xff), ((address shr  8) and 0xff), ((address shr 16) and 0xff))
-
-        return ipString;
-    }
-
 
     companion object {
         private val LOG_TAG: String = MainRepository::class.java.simpleName
