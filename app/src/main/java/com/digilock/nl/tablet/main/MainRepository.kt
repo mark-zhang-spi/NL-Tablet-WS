@@ -1375,7 +1375,7 @@ override fun downloadDB(context: Context): Observable<Boolean> {
                                         val ipAddr: InetAddress = packet.address
                                         val macAddress = jsonObject.get(BODY_MAC_ADDRESS).asString
 
-                                        devices.add(DeviceData("Connected Device", ipAddr.toString(), macAddress))
+                                        devices.add(DeviceData("Connected Device", macAddress, ipAddr.toString()))
 
                                         val jsonObject = JSONObject()
                                         jsonObject.put(JSON_CMD_TYPE, CMD_NL_STOP_RESPONSE)
