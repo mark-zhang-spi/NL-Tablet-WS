@@ -1341,7 +1341,7 @@ override fun downloadDB(context: Context): Observable<Boolean> {
 
     override fun getPairedControllerName(): String = sysPref.getString(PAIRED_CONTROLLER_NAME, "")
 
-    override fun findConnectedDevices(): Observable<List<DeviceData>> {
+    override fun scanConnectedDevices(): Observable<List<DeviceData>> {
         val devices = ArrayList<DeviceData>()
 
         return Observable.just(true)

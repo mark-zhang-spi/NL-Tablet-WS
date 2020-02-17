@@ -645,7 +645,7 @@ class MainPresenter(private val view: MainContract.View,
         dataSource.savePairedController("", "")      // Clear paired websocket controller IP address
         view.startScanController()
 
-        val Disposable = dataSource.findConnectedDevices()
+        val Disposable = dataSource.scanConnectedDevices()
                 .subscribeOn(scheduler.io())
                 .observeOn(scheduler.ui())
                 .subscribe(
