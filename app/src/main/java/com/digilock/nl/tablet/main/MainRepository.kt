@@ -11,10 +11,7 @@ import com.digilock.nl.tablet.data.*
 import com.digilock.nl.tablet.database.dao.*
 import com.digilock.nl.tablet.util.*
 import com.digilock.nl.tablet.util.constants.*
-import com.digilock.nl.tablet.websocket.BODY_MAC_ADDRESS
-import com.digilock.nl.tablet.websocket.CMD_NL_DISCOVERY
-import com.digilock.nl.tablet.websocket.CMD_NL_STOP_RESPONSE
-import com.digilock.nl.tablet.websocket.JSON_CMD_TYPE
+import com.digilock.nl.tablet.websocket.*
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.digilock.nl.tablet.websocket.WsClientService.Companion.LOG_TAG
@@ -1372,10 +1369,10 @@ override fun downloadDB(context: Context): Observable<Boolean> {
                                 val jsonObject: JsonObject = JsonParser().parse(stringData).getAsJsonObject()
                                 when(jsonObject.get(JSON_CMD_TYPE).asString) {
                                     CMD_NL_DISCOVERY -> {
-                                        val ipAddr: InetAddress = packet.address
+                                        val ipAddr = jsonObject.get(BODY_IP_ADDRESS).asString
                                         val macAddress = jsonObject.get(BODY_MAC_ADDRESS).asString
 
-                                        devices.add(DeviceData("Connected Device", macAddress, ipAddr.toString()))
+                                        devices.add(DeviceData("Connected Device", macAddress, ipAddr))
 
                                         val jsonObject = JSONObject()
                                         jsonObject.put(JSON_CMD_TYPE, CMD_NL_STOP_RESPONSE)
