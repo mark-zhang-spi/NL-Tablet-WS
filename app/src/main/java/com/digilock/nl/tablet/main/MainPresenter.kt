@@ -627,11 +627,11 @@ class MainPresenter(private val view: MainContract.View,
         compositeDisposable.add(Disposable)
     }
 
-    override fun connectBleController(context: Context) {
+    override fun connectWSController(context: Context) {
         val address = dataSource.getPairedControllerIPAddress()
 
         if(address.isNullOrEmpty()) {
-            view.showErrorMessage(context.getString(R.string.no_paired_controller))
+            view.showErrorMessage(context.getString(R.string.no_connected_controller))
         } else {
             view.connectController(address)
         }

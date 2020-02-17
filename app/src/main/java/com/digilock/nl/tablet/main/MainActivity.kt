@@ -169,7 +169,7 @@ class MainActivity: AppCompatActivity(),
         }
 
         ivBTConnectStatus_Main.setOnClickListener {
-            presenter.connectBleController(this)
+            presenter.connectWSController(this)
         }
 
         /*
@@ -333,33 +333,22 @@ class MainActivity: AppCompatActivity(),
         /*
             SETTINGS layout
          */
-        recyclerViewDevices = findViewById(R.id.recyclerViewDevices_BT)
+        recyclerViewDevices = findViewById(R.id.recyclerViewDevices_Settings)
         recyclerViewDevices.layoutManager = LinearLayoutManager(this)
 
         devicesAdapter = DevicesRecyclerViewAdapter(mDeviceList = mDeviceList)
         recyclerViewDevices.adapter = devicesAdapter
         devicesAdapter.setItemClickListener(this)
 
-        etIPAddress_Part4_BT.setOnEditorActionListener() { v, actionId, event ->
-            if(actionId == EditorInfo.IME_ACTION_DONE) {
-                presenter.setControllerIP(this, etIPAddress_Part1_BT.editableText, etIPAddress_Part2_BT.editableText, etIPAddress_Part3_BT.editableText, etIPAddress_Part4_BT.editableText)
-                return@setOnEditorActionListener true
-            }
-
-            false
-            false
-        }
-
-        btnSetControllerIP_Settings.setOnClickListener {
-            presenter.setControllerIP(this, etIPAddress_Part1_BT.editableText, etIPAddress_Part2_BT.editableText, etIPAddress_Part3_BT.editableText, etIPAddress_Part4_BT.editableText)
-
-            val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(it.windowToken, 0)
-        }
-
         btnScanController_Settings.setOnClickListener {
-            tvPairedBleControllerStatus_BT.text = getString(R.string.no_paired_controller)
+            tvConnectedControllerStatus_Settings.text = getString(R.string.no_connected_controller)
             presenter.scanController(this)
+        }
+
+        btnDisconnectController_Settings.setOnClickListener{
+            if(mWsClientService != null) {
+                mWsClientService!!.disconnectServer()
+            }
         }
 
         btnSyncController_Settings.setOnClickListener {
@@ -407,8 +396,8 @@ class MainActivity: AppCompatActivity(),
     }
 
     override fun showPairedControllerName(name: String) {
-        if(name.isNullOrEmpty())    tvPairedBleControllerStatus_BT.text = getString(R.string.no_paired_controller)
-        else tvPairedBleControllerStatus_BT.text = name
+        if(name.isNullOrEmpty())    tvConnectedControllerStatus_Settings.text = getString(R.string.no_connected_controller)
+        else tvConnectedControllerStatus_Settings.text = name
     }
 
     override fun connectController(address: String) {
@@ -425,11 +414,11 @@ class MainActivity: AppCompatActivity(),
         mDeviceList.clear()
         devicesAdapter.notifyDataSetChanged()
 
-        llScanDevice_BT.visibility = View.VISIBLE
+        llScanDevice_Settings.visibility = View.VISIBLE
     }
 
     override fun stopScanController() {
-        llScanDevice_BT.visibility = View.INVISIBLE
+        llScanDevice_Settings.visibility = View.INVISIBLE
     }
 
     override fun updateControllerDevicesView(devices: List<DeviceData>) {
@@ -849,14 +838,14 @@ class MainActivity: AppCompatActivity(),
             when (intent.action) {
                 WsClientService.ACTION_WEBSOCKET_CLIENT_CONNECTED -> {
                     Log.e(LOG_TAG, "WebSocket client connected.")
-//                    tvServerConnection.text = getString(R.string.server_connected)
+                    tvConnectedControllerStatus_Settings.text = getString(R.string.connected_controller)
                     ivBTConnectStatus_Main.setImageResource(R.mipmap.connected_logo)
                     mWsClientIsConnected = true
                 }
 
                 WsClientService.ACTION_WEBSOCKET_CLIENT_DISCONNECTED -> {
                     Log.e(LOG_TAG, "WebSocket client disconnected.")
-//                    tvServerConnection.text = getString(R.string.server_disconnected)
+                    tvConnectedControllerStatus_Settings.text = getString(R.string.no_connected_controller)
                     ivBTConnectStatus_Main.setImageResource(R.mipmap.disconnected_logo)
                     mWsClientIsConnected = false
 
@@ -871,7 +860,7 @@ class MainActivity: AppCompatActivity(),
                     Log.e(LOG_TAG, "WebSocket client failure.")
 //                    tvServerConnection.text = getString(R.string.server_disconnected)
 //                    tvServerMessage.text = getString(R.string.server_connect_failure)
-                    ivBTConnectStatus_Main.setImageResource(R.mipmap.disconnected_logo)
+//                    ivBTConnectStatus_Main.setImageResource(R.mipmap.disconnected_logo)
 
                     isPingPongTimerCancelled = true
                     Handler().postDelayed ({
@@ -892,7 +881,6 @@ class MainActivity: AppCompatActivity(),
 
                     val msgTime = df.format(Date(System.currentTimeMillis())) + "::"
 
-//                    tvServerMessage.text = ""
                     val cmdType = intent.getStringExtra(JSON_CMD_TYPE)
                     when(cmdType) {
                         CMD_KEEP_CONNECTION -> {
@@ -1154,7 +1142,7 @@ class MainActivity: AppCompatActivity(),
         val NON_PAIRING_DEVICE = 0x00
         val PAIRING_DEVICE = 0x01
 
-        val WS_PING_PONG_PERIOD = 10 * 60000L
+        val WS_PING_PONG_PERIOD = 60000L
         val WS_PING_PONG_INTERVAL = 100L
 
     }

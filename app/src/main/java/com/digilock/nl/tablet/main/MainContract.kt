@@ -62,7 +62,7 @@ interface MainContract {
         /*
             ADMIN related
          */
-        fun connectBleController(context: Context)
+        fun connectWSController(context: Context)
 
         /*
             LOCKS related

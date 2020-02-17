@@ -22,6 +22,7 @@ class WsClientService : Service() {
     private var mWebSocketClient: OkHttpClient? = null
     private var mWebSocket: WebSocket? = null
     private var mIsServerConnected = false
+    private var mAllowAutoConnect = true
 
     private var urlServer = "ws://nl-server-testing.herokuapp.com"
     private var sysToken = "0123456789"
@@ -51,7 +52,9 @@ class WsClientService : Service() {
     }
 
     fun disconnectServer() {
-
+        mWebSocket!!.close(DISCONNECT_BY_CLIENT, "")
+        mWebSocketClient = null
+        mAllowAutoConnect = false
     }
 
     fun connectServer(address: String) {
@@ -62,6 +65,7 @@ class WsClientService : Service() {
             }
         }
 
+        mAllowAutoConnect = true
         urlServer = "ws://$address:38301"
         doConnectWebSocket()
 
@@ -89,7 +93,7 @@ class WsClientService : Service() {
 
             mWebSocket!!.send(jsonObject.toString())
         } else {
-            doConnectWebSocket()
+            if(mAllowAutoConnect)   doConnectWebSocket()
         }
 
     }

@@ -865,7 +865,7 @@
                 android:layout_weight=".25"/>
 
             <LinearLayout
-                android:id="@+id/btScanController_BT"
+                android:id="@+id/llScanController_Settings"
                 android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="0px"
@@ -878,18 +878,18 @@
                     android:layout_width="0px"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/paired_status"
+                    android:text="@string/connect_status"
                     android:textColor="@color/red"
                     android:gravity="center_vertical"
                     android:textSize="@dimen/label_font_size"/>
 
 
                 <TextView
-                    android:id="@+id/tvPairedBleControllerStatus_BT"
+                    android:id="@+id/tvConnectedControllerStatus_Settings"
                     android:layout_width="0px"
                     android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:text="@string/no_paired_controller"
+                    android:layout_weight="2"
+                    android:text="@string/no_connected_controller"
                     android:gravity="center|left"
                     android:textSize="@dimen/label_font_size"/>
 
@@ -900,120 +900,14 @@
                     android:layout_weight="1"
                     android:text="@string/button_scan_controller"/>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/btSetController_BT"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="0px"
-                android:layout_weight="1.25"
-                android:weightSum="5"
-                android:orientation="horizontal"
-                android:padding="@dimen/padding_small">
-
-                <TextView
-                    android:layout_width="0px"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="@string/controller_ip_address"
-                    android:textColor="@color/red"
-                    android:gravity="center_vertical"
-                    android:textSize="@dimen/label_font_size"/>
-
-
-                <LinearLayout
-                    android:layout_width="0px"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <EditText
-                        android:id="@+id/etIPAddress_Part1_BT"
-                        android:layout_width="0px"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:inputType="number"
-                        android:maxLength="3"
-                        android:imeOptions="actionNext"
-                        android:gravity="center"
-                        android:textSize="@dimen/label_font_size"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text=":"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/label_font_size"/>
-
-                    <EditText
-                        android:id="@+id/etIPAddress_Part2_BT"
-                        android:layout_width="0px"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:inputType="number"
-                        android:maxLength="3"
-                        android:imeOptions="actionNext"
-                        android:gravity="center"
-                        android:textSize="@dimen/label_font_size"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text=":"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/label_font_size"/>
-
-                    <EditText
-                        android:id="@+id/etIPAddress_Part3_BT"
-                        android:layout_width="0px"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:inputType="number"
-                        android:maxLength="3"
-                        android:imeOptions="actionNext"
-                        android:gravity="center"
-                        android:textSize="@dimen/label_font_size"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text=":"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/label_font_size"/>
-
-                    <EditText
-                        android:id="@+id/etIPAddress_Part4_BT"
-                        android:layout_width="0px"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:inputType="number"
-                        android:maxLength="3"
-                        android:imeOptions="actionDone"
-                        android:gravity="center"
-                        android:textSize="@dimen/label_font_size"/>
-
-                </LinearLayout>
-
-
                 <Button
-                    android:id="@+id/btnSetControllerIP_Settings"
+                    android:id="@+id/btnDisconnectController_Settings"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/button_set_controllerIP"/>
+                    android:text="@string/button_disconnect_controller"/>
 
             </LinearLayout>
-
-
-            <TextView
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="0px"
-                android:layout_weight="8" />
-
 
 
             <android.support.v4.widget.NestedScrollView
@@ -1028,14 +922,14 @@
                     android:layout_height="wrap_content">
 
                     <LinearLayout
-                        android:id="@+id/llScanDevice_BT"
+                        android:id="@+id/llScanDevice_Settings"
                         android:visibility="invisible"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tvScanning_BT"
+                            android:id="@+id/tvScanning_Settings"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
@@ -1045,7 +939,7 @@
                             android:textStyle="bold" />
 
                         <ProgressBar
-                            android:id="@+id/progressBar_BT"
+                            android:id="@+id/progressBar_Settings"
                             android:layout_width="18dp"
                             android:layout_height="18dp"
                             android:layout_marginTop="16dp"
@@ -1054,11 +948,10 @@
                     </LinearLayout>
 
                     <android.support.v7.widget.RecyclerView
-                        android:id="@+id/recyclerViewDevices_BT"
+                        android:id="@+id/recyclerViewDevices_Settings"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/llScanDevice_BT"/>
-
+                        android:layout_below="@id/llScanDevice_Settings"/>
 
                 </RelativeLayout>
             </android.support.v4.widget.NestedScrollView>

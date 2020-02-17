@@ -140,10 +140,12 @@
 
     <string name="enter_confirm_passcode">Enter Confirmation Passcode: </string>
 
-    <string name="paired_status">Paired Status:</string>
-    <string name="button_scan_controller">Scan Controller</string>
-    <string name="no_paired_controller">No Paired Controller</string>
-    <string name="paired_controller_not_start">Paired controller not started.</string>
+    <string name="connect_status">Connect Status:</string>
+    <string name="no_connected_controller">No Connected Controller</string>
+    <string name="connected_controller">Connected to Controller</string>
+
+    <string name="button_scan_controller">Scan ...</string>
+    <string name="button_disconnect_controller">Disconnect</string>
 
     <string name="controller_ip_address">Controller IP Address:</string>
     <string name="button_set_controllerIP">Set Controller IP</string>

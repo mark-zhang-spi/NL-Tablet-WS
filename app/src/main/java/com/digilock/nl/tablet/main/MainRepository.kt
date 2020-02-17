@@ -1371,6 +1371,7 @@ override fun downloadDB(context: Context): Observable<Boolean> {
                                     CMD_NL_DISCOVERY -> {
                                         val ipAddr = jsonObject.get(BODY_IP_ADDRESS).asString
                                         val macAddress = jsonObject.get(BODY_MAC_ADDRESS).asString
+                                        Log.i(LOG_TAG, "Found device: ${ipAddr}, ${macAddress}")
 
                                         devices.add(DeviceData("Connected Device", macAddress, ipAddr))
 
@@ -1382,8 +1383,6 @@ override fun downloadDB(context: Context): Observable<Boolean> {
                                         socket.send(sendPacket)
                                     }
                                 }
-                            } else {
-                                break
                             }
                         }
                     }
