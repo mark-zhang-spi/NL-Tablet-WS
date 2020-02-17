@@ -1352,41 +1352,38 @@ override fun downloadDB(context: Context): Observable<Boolean> {
 
                         val socket = DatagramSocket()
                         socket.broadcast = true
+                        socket.soTimeout = CONNECT_DEVICE_WAIT_PERIOD
 
-                        var bFindNextDevice = true
-                        while(bFindNextDevice) {
+                        while(true) {
                             val packet = DatagramPacket(msg.toByteArray(), msg.length, broadcastAddr, 9001)
+
                             socket.send(packet)
 
                             val lmessage = ByteArray(4096)
                             val rcvPacket = DatagramPacket(lmessage, lmessage.size)
 
-                            val waitStart = System.currentTimeMillis()
-                            bFindNextDevice = false
-                            while((System.currentTimeMillis() - waitStart) < CONNECT_DEVICE_WAIT_PERIOD) {
-                                socket.receive(rcvPacket)
-                                val stringData = String(lmessage, 0, rcvPacket.getLength())
+                            socket.receive(rcvPacket)
+                            val stringData = String(lmessage, 0, rcvPacket.getLength())
 
-                                if(stringData.length > 0) {
-                                    val jsonObject: JsonObject = JsonParser().parse(stringData).getAsJsonObject()
-                                    when(jsonObject.get(JSON_CMD_TYPE).asString) {
-                                        CMD_NL_DISCOVERY -> {
-                                            val ipAddr: InetAddress = packet.address
-                                            val macAddress = jsonObject.get(BODY_MAC_ADDRESS).asString
+                            if(stringData.length > 0) {
+                                val jsonObject: JsonObject = JsonParser().parse(stringData).getAsJsonObject()
+                                when(jsonObject.get(JSON_CMD_TYPE).asString) {
+                                    CMD_NL_DISCOVERY -> {
+                                        val ipAddr: InetAddress = packet.address
+                                        val macAddress = jsonObject.get(BODY_MAC_ADDRESS).asString
 
-                                            devices.add(Pair(ipAddr.toString(), macAddress))
+                                        devices.add(Pair(ipAddr.toString(), macAddress))
 
-                                            val jsonObject = JSONObject()
-                                            jsonObject.put(JSON_CMD_TYPE, CMD_NL_STOP_RESPONSE)
-                                            val msg = jsonObject.toString()
+                                        val jsonObject = JSONObject()
+                                        jsonObject.put(JSON_CMD_TYPE, CMD_NL_STOP_RESPONSE)
+                                        val msg = jsonObject.toString()
 
-                                            val sendPacket = DatagramPacket(msg.toByteArray(), msg.length, rcvPacket.address, 9001)
-                                            socket.send(sendPacket)
-                                        }
+                                        val sendPacket = DatagramPacket(msg.toByteArray(), msg.length, rcvPacket.address, 9001)
+                                        socket.send(sendPacket)
                                     }
-
-                                    bFindNextDevice = true
                                 }
+                            } else {
+                                break
                             }
                         }
                     }

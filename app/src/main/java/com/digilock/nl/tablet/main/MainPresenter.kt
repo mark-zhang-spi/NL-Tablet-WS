@@ -674,7 +674,7 @@ class MainPresenter(private val view: MainContract.View,
                             }
                         },
                         {
-
+                            Log.i(LOG_TAG, "ARP init completed.")
                         }
                 )
 
