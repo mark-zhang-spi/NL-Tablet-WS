@@ -17,6 +17,7 @@ import com.digilock.nl.tablet.websocket.CMD_NL_STOP_RESPONSE
 import com.digilock.nl.tablet.websocket.JSON_CMD_TYPE
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
+import com.digilock.nl.tablet.websocket.WsClientService.Companion.LOG_TAG
 import io.reactivex.Flowable
 import io.reactivex.Observable
 import org.json.JSONObject
@@ -25,6 +26,8 @@ import java.lang.Exception
 import java.net.DatagramPacket
 import java.net.DatagramSocket
 import java.net.InetAddress
+import java.net.InetSocketAddress
+import java.net.Socket
 import java.nio.channels.FileChannel
 import java.util.*
 import kotlin.collections.ArrayList

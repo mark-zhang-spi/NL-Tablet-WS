@@ -62,7 +62,8 @@ class WsClientService : Service() {
             }
         }
 
-        urlServer = "ws://$address:38301"
+//        urlServer = "ws://$address:38301"
+        urlServer = "ws://172.16.1.107:38301"
         doConnectWebSocket()
 
 //        Handler().postDelayed({ timerPingPong(PING_PONG_PERIOD, PING_PONG_INTERVAL) }, PING_PONG_INTERVAL * 2)
@@ -72,7 +73,6 @@ class WsClientService : Service() {
         val listener = EchoWebSocketListener()
         val request = Request.Builder()
                 .url(urlServer)
-//                        .url("ws://10.41.50.164:3001")
 //                .header("system token", sysToken)
                 .build()
 
