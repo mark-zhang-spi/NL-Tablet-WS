@@ -20,11 +20,7 @@ import io.reactivex.Observable
 import org.json.JSONObject
 import java.io.*
 import java.lang.Exception
-import java.net.DatagramPacket
-import java.net.DatagramSocket
-import java.net.InetAddress
-import java.net.InetSocketAddress
-import java.net.Socket
+import java.net.*
 import java.nio.channels.FileChannel
 import java.util.*
 import kotlin.collections.ArrayList
@@ -1344,18 +1340,18 @@ override fun downloadDB(context: Context): Observable<Boolean> {
         return Observable.just(true)
                 .map {
                     try {
-                        val broadcastAddr: InetAddress = InetAddress.getByName("255.255.255.255")
-
                         val jsonObject = JSONObject()
                         jsonObject.put(JSON_CMD_TYPE, CMD_NL_DISCOVERY)
                         val msg = jsonObject.toString()
 
-                        val socket = DatagramSocket()
-                        socket.broadcast = true
+                        val group: InetAddress = InetAddress.getByName("228.5.6.7")
+                        val socket = MulticastSocket()
+                        socket.joinGroup(group)
+
                         socket.soTimeout = CONNECT_DEVICE_WAIT_PERIOD
 
                         while(true) {
-                            val packet = DatagramPacket(msg.toByteArray(), msg.length, broadcastAddr, 9001)
+                            val packet = DatagramPacket(msg.toByteArray(), msg.length, group, 6789)
 
                             socket.send(packet)
 
@@ -1379,7 +1375,7 @@ override fun downloadDB(context: Context): Observable<Boolean> {
                                         jsonObject.put(JSON_CMD_TYPE, CMD_NL_STOP_RESPONSE)
                                         val msg = jsonObject.toString()
 
-                                        val sendPacket = DatagramPacket(msg.toByteArray(), msg.length, rcvPacket.address, 9001)
+                                        val sendPacket = DatagramPacket(msg.toByteArray(), msg.length, rcvPacket.address, 6789)
                                         socket.send(sendPacket)
                                     }
                                 }
