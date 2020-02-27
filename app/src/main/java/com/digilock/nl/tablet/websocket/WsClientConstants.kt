@@ -39,8 +39,18 @@ const val CMD_PACKET = "Packet command"
 
 const val CMD_NL_DISCOVERY = "NL Device Discovery"
 const  val CMD_NL_STOP_RESPONSE = "NL Stop Response"
-const  val BODY_MAC_ADDRESS = "MAC address"
+const  val BODY_MAC_ADDRESS = "MAC Address"
 const  val BODY_IP_ADDRESS = "IP address"
+
+const val CMD_INITIALIZE_CONTROLLER = "Initialize Controller"
+const val CMD_PROGRAM_CONTROLLER = "Program Controller"
+const val SYS_JWT = "System Token"
+const val SITE_UUID = "Site UUID"
+const val ADMIN_UUID = "Admin UUID"
+const val CTRL_UUID = "Controller UUID"
+const val CTRL_NAME = "Controller Name"
+const val CTRL_LOCATION = "Controller Location"
+const val SYS_NOTES = "System Notes"
 
 
 

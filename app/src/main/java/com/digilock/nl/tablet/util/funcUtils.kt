@@ -74,3 +74,11 @@ fun packetToString(packet: CommPacket): String {
 
     return str
 }
+
+fun getJWT(): String {
+
+}
+
+fun getUUID(): String {
+
+}

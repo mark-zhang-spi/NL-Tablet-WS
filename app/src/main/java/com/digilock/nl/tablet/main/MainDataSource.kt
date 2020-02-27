@@ -92,4 +92,6 @@ interface MainDataSource {
     fun restoreDB(context: Context): Observable<Boolean>
 
     fun scanConnectedDevices(): Observable<List<DeviceData>>
+
+    fun getWsPacket(cmd: String): String
 }

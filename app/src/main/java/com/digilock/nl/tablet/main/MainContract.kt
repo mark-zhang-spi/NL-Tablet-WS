@@ -132,8 +132,9 @@ interface MainContract {
          */
         fun showSettings()
         fun scanController(context: Context)
-        fun setControllerIP(context: Context, ipPart1: Editable, ipPart2: Editable, ipPart3: Editable, ipPart4: Editable)
         fun savePairedController(name: String, address: String)
+
+        fun addController()
 
         fun syncController()
         fun emptyAudit()

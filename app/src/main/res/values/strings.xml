@@ -137,6 +137,7 @@
 
     <string name="download_db">DownLoad DB</string>
     <string name="restore_db">Restore DB</string>
+    <string name="add_controller">Add Controller</string>
 
     <string name="enter_confirm_passcode">Enter Confirmation Passcode: </string>
 

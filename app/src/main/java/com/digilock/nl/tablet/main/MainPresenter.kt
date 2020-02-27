@@ -637,6 +637,16 @@ class MainPresenter(private val view: MainContract.View,
         }
     }
 
+    override fun addController() {
+        initializeController()
+
+
+    }
+
+    private fun initializeController() {
+        view.sendWsPacket(dataSource.getWsPacket())
+    }
+
     override fun showSettings() {
         view.showPairedControllerName(dataSource.getPairedControllerName())
     }
@@ -662,52 +672,6 @@ class MainPresenter(private val view: MainContract.View,
 
     }
 
-    override fun setControllerIP(context: Context, ipPart1: Editable, ipPart2: Editable, ipPart3: Editable, ipPart4: Editable) {
-        if(ipPart1.isNullOrEmpty()) {
-            view.showErrorMessage(context.getString(R.string.ip_field_empty))
-            return
-        }
-
-        if(ipPart2.isNullOrEmpty()) {
-            view.showErrorMessage(context.getString(R.string.ip_field_empty))
-            return
-        }
-
-        if(ipPart3.isNullOrEmpty()) {
-            view.showErrorMessage(context.getString(R.string.ip_field_empty))
-            return
-        }
-
-        if(ipPart4.isNullOrEmpty()) {
-            view.showErrorMessage(context.getString(R.string.ip_field_empty))
-            return
-        }
-
-        if(ipPart1.toString().toInt() > 255) {
-            view.showErrorMessage(context.getString(R.string.ip_field_too_large))
-            return
-        }
-
-        if(ipPart2.toString().toInt() > 255) {
-            view.showErrorMessage(context.getString(R.string.ip_field_too_large))
-            return
-        }
-
-        if(ipPart3.toString().toInt() > 255) {
-            view.showErrorMessage(context.getString(R.string.ip_field_too_large))
-            return
-        }
-
-        if(ipPart4.toString().toInt() > 255) {
-            view.showErrorMessage(context.getString(R.string.ip_field_too_large))
-            return
-        }
-
-        val ipAddress = "${ipPart1.toString()}.${ipPart2.toString()}.${ipPart3.toString()}.${ipPart4.toString()}"
-        dataSource.savePairedController("", ipAddress)
-
-        view.connectController(ipAddress)
-    }
 
     override fun savePairedController(name: String, address: String) {
         dataSource.savePairedController(name, address)

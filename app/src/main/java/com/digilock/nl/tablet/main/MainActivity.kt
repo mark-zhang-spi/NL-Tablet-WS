@@ -371,6 +371,9 @@ class MainActivity: AppCompatActivity(),
             startActivityForResult(clearAuditTrailIntent, CONFIRM_CLEAR_AUDIT_TRAIL)
         }
 
+        btnAddController_Settings.setOnClickListener{
+            if(mWsClientIsConnected)    presenter.addController()
+        }
         /*
             DOWNLOAD DATABASE
          */

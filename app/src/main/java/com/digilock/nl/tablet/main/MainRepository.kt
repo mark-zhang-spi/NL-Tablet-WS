@@ -1390,6 +1390,34 @@ override fun downloadDB(context: Context): Observable<Boolean> {
                 }
     }
 
+    fun getWsPacket(cmd: String): String {
+        var sPacket = ""
+        when(cmd) {
+            CMD_INITIALIZE_CONTROLLER -> {
+                val jsonObject = JSONObject()
+                jsonObject.put(JSON_CMD_TYPE, CMD_INITIALIZE_CONTROLLER)
+                sPacket = jsonObject.toString()
+            }
+            CMD_PROGRAM_CONTROLLER -> {
+                val jsonObject = JSONObject()
+                jsonObject.put(JSON_CMD_TYPE, CMD_PROGRAM_CONTROLLER)
+                jsonObject.put(SYS_JWT, getJWT())
+                jsonObject.put(SITE_UUID, getUUID())
+                jsonObject.put(ADMIN_UUID, getUUID())
+                jsonObject.put(CTRL_NAME, "Digilock Inc")
+                jsonObject.put(CTRL_LOCATION, "Petaluma")
+                jsonObject.put(SYS_NOTES, "Nothing"
+
+                sPacket = jsonObject.toString()
+            }
+            else -> {
+
+            }
+        }
+
+        return sPacket
+    }
+
     companion object {
         private val LOG_TAG: String = MainRepository::class.java.simpleName
     }
