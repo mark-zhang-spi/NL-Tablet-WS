@@ -843,7 +843,7 @@ class MainActivity: AppCompatActivity(),
         override fun handleMessage(msg: Message) {
             when(msg.what) {
                 WEBSOCKET_MESSAGE -> {
-                    Toast.makeText(mContext, msg.data.getString(WS_MSG), Toast.LENGTH_LONG).show()
+                    Snackbar.make(findViewById(R.id.llScanController_Settings), msg.data.getString(WS_MSG), Snackbar.LENGTH_LONG).show()
                 }
             }
         }
