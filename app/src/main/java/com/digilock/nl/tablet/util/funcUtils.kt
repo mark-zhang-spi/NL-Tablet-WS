@@ -2,6 +2,7 @@ package com.digilock.nl.tablet.util
 
 import com.digilock.nl.tablet.comm.CommPacket
 import kotlin.experimental.xor
+import kotlin.random.Random
 
 val CRC8: ByteArray = byteArrayOf(
         0x00, 0x5E, -0x44, -0x1E, 0x61, 0x3F, -0x23, -0x7D, -0x3E, -0x64, 0x7E, 0x20, -0x5D, -0x03, 0x1F, 0x41,
@@ -75,10 +76,3 @@ fun packetToString(packet: CommPacket): String {
     return str
 }
 
-fun getJWT(): String {
-
-}
-
-fun getUUID(): String {
-
-}

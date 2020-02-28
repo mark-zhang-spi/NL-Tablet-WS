@@ -1,6 +1,8 @@
 package com.digilock.nl.tablet.websocket
 
 import com.digilock.nl.tablet.util.CMD_GET_ALL_LOCKS_STATUS_BT
+import java.util.*
+import kotlin.random.Random
 
 const val JSON_CMD_TYPE = "cmdType"
 const val CMD_KEEP_CONNECTION = "Keep Connection Alive"
@@ -76,3 +78,23 @@ fun intToIp(i: Int): String? {
 
 
 const val CMD_GET_LOCK_STATUS_WS: Byte = 0x48
+
+const val SYSTEM_JWT_COUNT = 48
+
+fun getJWT(): String {
+    val rndBytes = Random.nextBytes(SYSTEM_JWT_COUNT)
+    var sJWT = ""
+
+    for(b in rndBytes) {
+        val v = b.toInt() and 0xFF
+        val remains = v % 62
+
+        if(remains < 11)    sJWT += ('0'+remains).toString()
+        else if(remains < 37)    sJWT += ('a'+(remains-11)).toString()
+        else sJWT += ('A'+(remains-37)).toString()
+    }
+
+    return sJWT
+}
+
+fun getUUID(): String = UUID.randomUUID().toString()

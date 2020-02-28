@@ -12,6 +12,8 @@ import com.digilock.nl.tablet.data.Lock
 import com.digilock.nl.tablet.data.User
 import com.digilock.nl.tablet.util.*
 import com.digilock.nl.tablet.util.constants.*
+import com.digilock.nl.tablet.websocket.CMD_INITIALIZE_CONTROLLER
+import com.digilock.nl.tablet.websocket.CMD_PROGRAM_CONTROLLER
 import com.securitypeople.packagehold.util.scheduler.BaseSchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -638,13 +640,8 @@ class MainPresenter(private val view: MainContract.View,
     }
 
     override fun addController() {
-        initializeController()
-
-
-    }
-
-    private fun initializeController() {
-        view.sendWsPacket(dataSource.getWsPacket())
+        view.sendWsJSonPacket(dataSource.getWsPacket(CMD_INITIALIZE_CONTROLLER))
+        view.sendWsJSonPacket(dataSource.getWsPacket(CMD_PROGRAM_CONTROLLER))
     }
 
     override fun showSettings() {

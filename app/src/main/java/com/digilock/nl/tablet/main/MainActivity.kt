@@ -686,6 +686,11 @@ class MainActivity: AppCompatActivity(),
         }
     }
 
+    override fun sendWsJSonPacket(sPacket: String) {
+        if(mWsClientService != null ) {
+            mWsClientService?.writeJSonPacketToServer(sPacket)
+        }
+    }
 
     /*
         USERS layout

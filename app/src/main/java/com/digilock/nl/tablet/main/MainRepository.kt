@@ -1390,7 +1390,7 @@ override fun downloadDB(context: Context): Observable<Boolean> {
                 }
     }
 
-    fun getWsPacket(cmd: String): String {
+    override fun getWsPacket(cmd: String): String {
         var sPacket = ""
         when(cmd) {
             CMD_INITIALIZE_CONTROLLER -> {
@@ -1406,7 +1406,7 @@ override fun downloadDB(context: Context): Observable<Boolean> {
                 jsonObject.put(ADMIN_UUID, getUUID())
                 jsonObject.put(CTRL_NAME, "Digilock Inc")
                 jsonObject.put(CTRL_LOCATION, "Petaluma")
-                jsonObject.put(SYS_NOTES, "Nothing"
+                jsonObject.put(SYS_NOTES, "Nothing")
 
                 sPacket = jsonObject.toString()
             }

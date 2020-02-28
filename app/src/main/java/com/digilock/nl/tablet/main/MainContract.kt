@@ -29,6 +29,7 @@ interface MainContract {
         fun updateLockNames(locks: ArrayList<String>)
 
         fun sendWsPacket(packet: CommPacket)
+        fun sendWsJSonPacket(sPacket: String)
 
         fun showLockNamesFilter(hide: Boolean)
         fun showAuditTrail(hide: Boolean)

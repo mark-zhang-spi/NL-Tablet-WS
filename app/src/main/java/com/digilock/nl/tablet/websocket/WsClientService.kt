@@ -126,6 +126,12 @@ class WsClientService : Service() {
         }
     }
 
+    fun writeJSonPacketToServer(sPacket: String) {
+        if(mIsServerConnected) {
+            mWebSocket!!.send(sPacket)
+        }
+    }
+
 
     fun setServerURL(url: String) {
         urlServer = url
