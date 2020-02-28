@@ -51,8 +51,8 @@ class WsClientService : Service() {
             get() = this@WsClientService
     }
 
-    fun disconnectServer() {
-        mWebSocket!!.close(DISCONNECT_BY_CLIENT, "")
+    fun disconnectServer(reason: String) {
+        mWebSocket!!.close(DISCONNECT_BY_CLIENT, reason)
         mWebSocketClient = null
         mAllowAutoConnect = false
     }

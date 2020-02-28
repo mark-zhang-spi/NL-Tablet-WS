@@ -347,7 +347,7 @@ class MainActivity: AppCompatActivity(),
 
         btnDisconnectController_Settings.setOnClickListener{
             if(mWsClientService != null) {
-                mWsClientService!!.disconnectServer()
+                mWsClientService!!.disconnectServer("Disconnect button clicked.")
             }
         }
 
@@ -406,7 +406,7 @@ class MainActivity: AppCompatActivity(),
     override fun connectController(address: String) {
         if (mWsClientService != null) {
             if(mWsClientIsConnected) {
-                mWsClientService!!.disconnectServer()
+                mWsClientService!!.disconnectServer("New connect request.")
             }
 
             mWsClientService!!.connectServer(address)
@@ -514,7 +514,7 @@ class MainActivity: AppCompatActivity(),
 
         if(mWsClientService != null) {
             if(mWsClientIsConnected) {
-                mWsClientService!!.disconnectServer()
+                mWsClientService!!.disconnectServer("Apps was paused.")
             }
         }
 
@@ -891,6 +891,9 @@ class MainActivity: AppCompatActivity(),
 
                     val cmdType = intent.getStringExtra(JSON_CMD_TYPE)
                     when(cmdType) {
+                        CMD_PROGRAM_CONTROLLER -> {
+                            mWsClientService!!.disconnectServer("Program Controller Done !")
+                        }
                         CMD_KEEP_CONNECTION -> {
                             val content = intent.getStringExtra(JSON_BODY)
 //                            tvServerMessage.text = msgTime + content

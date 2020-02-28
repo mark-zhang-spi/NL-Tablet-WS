@@ -661,12 +661,11 @@ class MainPresenter(private val view: MainContract.View,
                             view.updateControllerDevicesView(it)
                         },
                         {
-                            Log.i(LOG_TAG, "ARP init completed.")
+                            Log.i(LOG_TAG, "Scan connected device error, ${it.localizedMessage}.")
                         }
                 )
 
         compositeDisposable.add(Disposable)
-
     }
 
 
