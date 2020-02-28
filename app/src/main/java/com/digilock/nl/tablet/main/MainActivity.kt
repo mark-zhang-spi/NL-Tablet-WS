@@ -1,14 +1,12 @@
 package com.digilock.nl.tablet.main
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.*
 import android.content.pm.PackageManager
 import android.graphics.Color
-import android.os.Bundle
-import android.os.CountDownTimer
-import android.os.Handler
-import android.os.IBinder
+import android.os.*
 import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
@@ -840,14 +838,27 @@ class MainActivity: AppCompatActivity(),
     /*
         Websocket client module
      */
+    private var wsHandler = @SuppressLint("HandlerLeak")
+    object : Handler() {
+        override fun handleMessage(msg: Message) {
+            when(msg.what) {
+                WEBSOCKET_MESSAGE -> {
+                    Toast.makeText(mContext, msg.data.getString(WS_MSG), Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
     var df: SimpleDateFormat = SimpleDateFormat("hh:mm:ss a", Locale.getDefault())
     private val mWsClientReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             when (intent.action) {
                 WsClientService.ACTION_WEBSOCKET_CLIENT_CONNECTED -> {
                     Log.e(LOG_TAG, "WebSocket client connected.")
-                    tvConnectedControllerStatus_Settings.text = getString(R.string.connected_controller)
-                    ivBTConnectStatus_Main.setImageResource(R.mipmap.connected_logo)
+                    runOnUiThread {
+                        tvConnectedControllerStatus_Settings.text = getString(R.string.connected_controller)
+                        ivBTConnectStatus_Main.setImageResource(R.mipmap.connected_logo)
+                    }
                     mWsClientIsConnected = true
                 }
 
@@ -866,9 +877,11 @@ class MainActivity: AppCompatActivity(),
 
                 WsClientService.ACTION_WEBSOCKET_CLIENT_FAILURE -> {
                     Log.e(LOG_TAG, "WebSocket client failure.")
-//                    tvServerConnection.text = getString(R.string.server_disconnected)
-//                    tvServerMessage.text = getString(R.string.server_connect_failure)
-//                    ivBTConnectStatus_Main.setImageResource(R.mipmap.disconnected_logo)
+
+                    val msg = wsHandler.obtainMessage(WEBSOCKET_MESSAGE)
+                    val bundle = Bundle()
+                    bundle.putString(WS_MSG, "WebSocket client received failure")
+                    wsHandler.handleMessage(msg)
 
                     isPingPongTimerCancelled = true
                     Handler().postDelayed ({
@@ -896,13 +909,26 @@ class MainActivity: AppCompatActivity(),
                             val msg = intent.getStringExtra(JSON_BODY)
                             if(result.equals(PACKET_SUCCESS)) {
                                 mWsClientService!!.disconnectServer("Program Controller Done !")
-                            } else {
 
+                                val msg = wsHandler.obtainMessage(WEBSOCKET_MESSAGE)
+                                val bundle = Bundle()
+                                bundle.putString(WS_MSG, "Program Controller succeed !")
+                                wsHandler.handleMessage(msg)
+
+                            } else {
+                                val msg = wsHandler.obtainMessage(WEBSOCKET_MESSAGE)
+                                val bundle = Bundle()
+                                bundle.putString(WS_MSG, "Program Controller failed !")
+                                wsHandler.handleMessage(msg)
                             }
                         }
                         CMD_KEEP_CONNECTION -> {
                             val content = intent.getStringExtra(JSON_BODY)
-//                            tvServerMessage.text = msgTime + content
+
+                            val msg = wsHandler.obtainMessage(WEBSOCKET_MESSAGE)
+                            val bundle = Bundle()
+                            bundle.putString(WS_MSG, "Receive server Ping-Pong response !")
+                            wsHandler.handleMessage(msg)
                         }
                         CMD_LOCK_CRED_ASSIGNMENT -> {
                             val lockUUID = intent.getStringExtra(LOCK_UUID)
@@ -1162,6 +1188,9 @@ class MainActivity: AppCompatActivity(),
         val WS_PING_PONG_PERIOD = 60000L
         val WS_PING_PONG_INTERVAL = 100L
 
+        val WEBSOCKET_MESSAGE = 1
+        val WS_MSG = "WebSocket Message:"
+        val WSCLIENT_FAILURE = "WebSocket receive failure"
     }
 
 }
