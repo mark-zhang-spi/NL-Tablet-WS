@@ -915,7 +915,7 @@
                 android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="8">
+                android:layout_weight="7">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -959,10 +959,21 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="3dp"
+                android:layout_height="1dp"
                 android:background="@android:color/darker_gray"/>
 
+            <TextView
+                android:id="@+id/tvWS_Message_Settinfs"
+                android:layout_width="wrap_content"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:textSize="@dimen/label_font_size"/>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@android:color/darker_gray"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
