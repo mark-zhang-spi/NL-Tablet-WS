@@ -843,7 +843,8 @@ class MainActivity: AppCompatActivity(),
         override fun handleMessage(msg: Message) {
             when(msg.what) {
                 WEBSOCKET_MESSAGE -> {
-                    tvWS_Message_Settinfs.text = msg.data.getString(WS_MSG)
+                    val message = msg.data.getString(WS_MSG)
+                    tvWS_Message_Settings.text = message
                 }
             }
         }
@@ -913,6 +914,7 @@ class MainActivity: AppCompatActivity(),
                                 val msg = wsHandler.obtainMessage(WEBSOCKET_MESSAGE)
                                 val bundle = Bundle()
                                 bundle.putString(WS_MSG, "Program Controller succeed !")
+                                msg?.data = bundle
                                 wsHandler.handleMessage(msg)
 
                             } else {

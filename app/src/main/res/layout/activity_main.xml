@@ -963,7 +963,7 @@
                 android:background="@android:color/darker_gray"/>
 
             <TextView
-                android:id="@+id/tvWS_Message_Settinfs"
+                android:id="@+id/tvWS_Message_Settings"
                 android:layout_width="wrap_content"
                 android:layout_height="0px"
                 android:layout_weight="1"
