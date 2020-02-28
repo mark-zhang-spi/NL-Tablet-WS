@@ -175,7 +175,16 @@ class WsClientService : Service() {
                     intent.putExtra(JSON_BODY, CONTENT_KEEP_CONNECTION)
                     sendBroadcast(intent)
                 }
-
+                CMD_PROGRAM_CONTROLLER -> {
+                    val result = jsonObject.get(CMD_RESULT).asString
+                    val msg = jsonObject.get(JSON_BODY).asString
+                    Log.e(LOG_TAG, "Receive Program Controller response: ${result}${msg}")
+                    val intent = Intent(ACTION_WEBSOCKET_CLIENT_DATA_RECEIVED)
+                    intent.putExtra(JSON_CMD_TYPE, CMD_PROGRAM_CONTROLLER)
+                    intent.putExtra(CMD_RESULT, result)
+                    intent.putExtra(JSON_BODY, msg)
+                    sendBroadcast(intent)
+                }
                 CMD_LOCK_CRED_ASSIGNMENT -> {
                     Log.e(LOG_TAG, "Server send lock-credential-assignment update")
 

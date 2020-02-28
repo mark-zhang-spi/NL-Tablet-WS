@@ -892,7 +892,13 @@ class MainActivity: AppCompatActivity(),
                     val cmdType = intent.getStringExtra(JSON_CMD_TYPE)
                     when(cmdType) {
                         CMD_PROGRAM_CONTROLLER -> {
-                            mWsClientService!!.disconnectServer("Program Controller Done !")
+                            val result = intent.getStringExtra(CMD_RESULT)
+                            val msg = intent.getStringExtra(JSON_BODY)
+                            if(result.equals(PACKET_SUCCESS)) {
+                                mWsClientService!!.disconnectServer("Program Controller Done !")
+                            } else {
+
+                            }
                         }
                         CMD_KEEP_CONNECTION -> {
                             val content = intent.getStringExtra(JSON_BODY)

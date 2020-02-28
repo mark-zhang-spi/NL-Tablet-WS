@@ -8,6 +8,7 @@ const val JSON_CMD_TYPE = "cmdType"
 const val CMD_KEEP_CONNECTION = "Keep Connection Alive"
 const val JSON_BODY = "Body"
 const val CONTENT_KEEP_CONNECTION = "-Ping-Pong-"
+const val CMD_RESULT = "Command execute result"
 
 const val CMD_AUDIT_TRAIL = "Audit Trail"
 const val LOCK_STATUS = "lockStatus"
